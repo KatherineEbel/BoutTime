@@ -12,6 +12,8 @@
 		274C55131DBBE2E400F7D0D2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 274C55111DBBE2E400F7D0D2 /* Main.storyboard */; };
 		274C55151DBBE2E400F7D0D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 274C55141DBBE2E400F7D0D2 /* Assets.xcassets */; };
 		274C55181DBBE2E400F7D0D2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 274C55161DBBE2E400F7D0D2 /* LaunchScreen.storyboard */; };
+		44B485AA1DBCF64B00C7475E /* IncorrectBuzz.wav in Resources */ = {isa = PBXBuildFile; fileRef = 44B485A81DBCF64B00C7475E /* IncorrectBuzz.wav */; };
+		44B485AB1DBCF64B00C7475E /* CorrectDing.wav in Resources */ = {isa = PBXBuildFile; fileRef = 44B485A91DBCF64B00C7475E /* CorrectDing.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		274C55141DBBE2E400F7D0D2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		274C55171DBBE2E400F7D0D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		274C55191DBBE2E400F7D0D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		44B485A81DBCF64B00C7475E /* IncorrectBuzz.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = IncorrectBuzz.wav; sourceTree = "<group>"; };
+		44B485A91DBCF64B00C7475E /* CorrectDing.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = CorrectDing.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +58,7 @@
 		274C550C1DBBE2E400F7D0D2 /* BoutTime */ = {
 			isa = PBXGroup;
 			children = (
+				44B485A71DBCF62F00C7475E /* Sounds */,
 				274C550D1DBBE2E400F7D0D2 /* AppDelegate.swift */,
 				274C550F1DBBE2E400F7D0D2 /* ViewController.swift */,
 				274C55111DBBE2E400F7D0D2 /* Main.storyboard */,
@@ -62,6 +67,15 @@
 				274C55191DBBE2E400F7D0D2 /* Info.plist */,
 			);
 			path = BoutTime;
+			sourceTree = "<group>";
+		};
+		44B485A71DBCF62F00C7475E /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				44B485A81DBCF64B00C7475E /* IncorrectBuzz.wav */,
+				44B485A91DBCF64B00C7475E /* CorrectDing.wav */,
+			);
+			name = Sounds;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -124,7 +138,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44B485AB1DBCF64B00C7475E /* CorrectDing.wav in Resources */,
 				274C55181DBBE2E400F7D0D2 /* LaunchScreen.storyboard in Resources */,
+				44B485AA1DBCF64B00C7475E /* IncorrectBuzz.wav in Resources */,
 				274C55151DBBE2E400F7D0D2 /* Assets.xcassets in Resources */,
 				274C55131DBBE2E400F7D0D2 /* Main.storyboard in Resources */,
 			);
@@ -300,6 +316,7 @@
 				274C551E1DBBE2E400F7D0D2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
