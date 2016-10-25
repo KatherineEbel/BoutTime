@@ -1,14 +1,231 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<!--
-   Events.plist
-   BoutTime
-
-   Created by Katherine Ebel on 10/23/16.
-   Copyright (c) 2016 Katherine Ebel. All rights reserved.
--->
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-    <dict>
-    
-    </dict>
+<dict>
+	<key>Event 1</key>
+	<dict>
+		<key>name</key>
+		<string>The First World Series</string>
+		<key>dateString</key>
+		<string>October 1, 1903</string>
+		<key>infoUrlString</key>
+		<string>https://en.wikipedia.org/wiki/1903_World_Series</string>
+	</dict>
+	<key>Event 2</key>
+	<dict>
+		<key>name</key>
+		<string>First Ford Model T completed</string>
+		<key>dateString</key>
+		<string>October 1, 1908</string>
+		<key>infoUrlString</key>
+		<string>http://www.history.com/this-day-in-history/ford-motor-company-unveils-the-model-t</string>
+	</dict>
+	<key>Event 3</key>
+	<dict>
+		<key>name</key>
+		<string>The Titanic Sinks</string>
+		<key>dateString</key>
+		<string>April 15, 1912</string>
+		<key>infoUrlString</key>
+		<string>http://www.history.com/this-day-in-history/titanic-sinks</string>
+	</dict>
+	<key>Event 4</key>
+	<dict>
+		<key>name</key>
+		<string>First radio broadcast in Pittsburgh, Pennsylvania</string>
+		<key>dateString</key>
+		<string>November 2, 1920</string>
+		<key>infoUrlString</key>
+		<string>http://pittsburgh.cbslocal.com/2012/03/08/kdkas-historic-broadcast/</string>
+	</dict>
+	<key>Event 5</key>
+	<dict>
+		<key>name</key>
+		<string>The Great Depression begins</string>
+		<key>dateString</key>
+		<string>October 1929</string>
+		<key>infoUrlString</key>
+		<string>http://www.history.com/topics/great-depression</string>
+	</dict>
+	<key>Event 6</key>
+	<dict>
+		<key>name</key>
+		<string>Pearl Harbor attacked</string>
+		<key>dateString</key>
+		<string>December 7, 1941</string>
+		<key>infoUrlString</key>
+		<string>https://en.wikipedia.org/wiki/Attack_on_Pearl_Harbor</string>
+	</dict>
+	<key>Event 7</key>
+	<dict>
+		<key>name</key>
+		<string>Neil Armstrong walks on the moon</string>
+		<key>dateString</key>
+		<string>July 20, 1969</string>
+		<key>infoUrlString</key>
+		<string>https://www.nasa.gov/mission_pages/apollo/apollo11.html</string>
+	</dict>
+	<key>Event 8</key>
+	<dict>
+		<key>name</key>
+		<string>Jimmy Carter elected president</string>
+		<key>dateString</key>
+		<string>November 2 1976</string>
+		<key>infoUrlString</key>
+		<string>https://en.wikipedia.org/wiki/United_States_presidential_election,_1976</string>
+	</dict>
+	<key>Event 9</key>
+	<dict>
+		<key>name</key>
+		<string>Three Mile Island nuclear accident</string>
+		<key>dateString</key>
+		<string>March 28, 1979</string>
+		<key>infoUrlString</key>
+		<string>https://en.wikipedia.org/wiki/Three_Mile_Island_accident</string>
+	</dict>
+	<key>Event 10</key>
+	<dict>
+		<key>name</key>
+		<string></string>
+		<key>dateString</key>
+		<string></string>
+		<key>infoUrlString</key>
+		<string></string>
+	</dict>
+	<key>Event 11</key>
+	<dict>
+		<key>name</key>
+		<string>Space Shuttle Challenger Accident</string>
+		<key>dateString</key>
+		<string>January 28, 1986</string>
+		<key>infoUrlString</key>
+		<string>http://www.space.com/31732-space-shuttle-challenger-disaster-explained-infographic.html</string>
+	</dict>
+	<key>Event 12</key>
+	<dict>
+		<key>name</key>
+		<string>Fox Broadcasting Company launched</string>
+		<key>dateString</key>
+		<string>October 9, 1986</string>
+		<key>infoUrlString</key>
+		<string>https://en.wikipedia.org/wiki/Fox_Broadcasting_Company</string>
+	</dict>
+	<key>Event 13</key>
+	<dict>
+		<key>name</key>
+		<string>Declaration of Independance signed</string>
+		<key>dateString</key>
+		<string>August 2, 1776</string>
+		<key>infoUrlString</key>
+		<string>http://www.constitutionfacts.com/us-declaration-of-independence/fascinating-facts/</string>
+	</dict>
+	<key>Event 14</key>
+	<dict>
+		<key>name</key>
+		<string>Battle of the Alamo started</string>
+		<key>dateString</key>
+		<string>February 23, 1836</string>
+		<key>infoUrlString</key>
+		<string>http://www.history.com/topics/alamo</string>
+	</dict>
+	<key>Event 15</key>
+	<dict>
+		<key>name</key>
+		<string>Confederate forces fire on Fort Sumter triggering American Civil War</string>
+		<key>dateString</key>
+		<string>April 12, 1861</string>
+		<key>infoUrlString</key>
+		<string>http://www.civilwar.org/education/history/civil-war-overview/overview.html?referrer=https://www.google.com/</string>
+	</dict>
+	<key>Event 16</key>
+	<dict>
+		<key>name</key>
+		<string>Abraham Lincoln assassinated at Ford&apos;s Theatre</string>
+		<key>dateString</key>
+		<string>April 14, 1865</string>
+		<key>infoUrlString</key>
+		<string>http://www.history.com/topics/abraham-lincoln-assassination</string>
+	</dict>
+	<key>Event 17</key>
+	<dict>
+		<key>name</key>
+		<string>US women granted the right to vote</string>
+		<key>dateString</key>
+		<string>August 18, 1920</string>
+		<key>infoUrlString</key>
+		<string>http://www.history.com/topics/womens-history/19th-amendment</string>
+	</dict>
+	<key>Event 18</key>
+	<dict>
+		<key>name</key>
+		<string>The first nuclear device detonated</string>
+		<key>dateString</key>
+		<string>July 16, 1945</string>
+		<key>infoUrlString</key>
+		<string>https://en.wikipedia.org/wiki/Manhattan_Project</string>
+	</dict>
+	<key>Event 19</key>
+	<dict>
+		<key>name</key>
+		<string>John F. Kennedy assassinated</string>
+		<key>dateString</key>
+		<string>November 22, 1963</string>
+		<key>infoUrlString</key>
+		<string>https://en.wikipedia.org/wiki/Assassination_of_John_F._Kennedy</string>
+	</dict>
+	<key>Event 20</key>
+	<dict>
+		<key>name</key>
+		<string>Charles Lindbergh makes the first solo transatlantic flight</string>
+		<key>dateString</key>
+		<string>May 20, 1927</string>
+		<key>infoUrlString</key>
+		<string>http://www.charleslindbergh.com/history/paris.asp</string>
+	</dict>
+	<key>Event 21</key>
+	<dict>
+		<key>name</key>
+		<string>The Star-Spangled Banner is adopted as the national anthem</string>
+		<key>dateString</key>
+		<string>March 3, 1931</string>
+		<key>infoUrlString</key>
+		<string>https://en.wikipedia.org/wiki/The_Star-Spangled_Banner</string>
+	</dict>
+	<key>Event 22</key>
+	<dict>
+		<key>name</key>
+		<string>The U.S. Enters World War I</string>
+		<key>dateString</key>
+		<string>April 6, 1917</string>
+		<key>infoUrlString</key>
+		<string>https://en.wikipedia.org/wiki/American_entry_into_World_War_I</string>
+	</dict>
+	<key>Event 23</key>
+	<dict>
+		<key>name</key>
+		<string>Explorer I, the first American satellite is launched</string>
+		<key>dateString</key>
+		<string>January 31, 1958</string>
+		<key>infoUrlString</key>
+		<string>https://en.wikipedia.org/wiki/Explorer_1</string>
+	</dict>
+	<key>Event 24</key>
+	<dict>
+		<key>name</key>
+		<string>Alaska becomes the 49th state</string>
+		<key>dateString</key>
+		<string>January 3, 1959</string>
+		<key>infoUrlString</key>
+		<string>http://learning.blogs.nytimes.com/2012/01/03/jan-3-1959-alaska-becomes-a-state/?_r=0</string>
+	</dict>
+	<key>Event 25</key>
+	<dict>
+		<key>name</key>
+		<string>John Glenn becomes the first U.S. astronaut to orbit Earth</string>
+		<key>dateString</key>
+		<string>February 20, 1962</string>
+		<key>infoUrlString</key>
+		<string>https://en.wikipedia.org/wiki/John_Glenn</string>
+	</dict>
+</dict>
 </plist>
