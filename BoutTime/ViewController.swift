@@ -12,12 +12,20 @@ class ViewController: UIViewController {
  
   @IBOutlet var eventLabels: [UILabel]!
   let boutTimeGame = BoutTimeGame()
-
-
+  let shakeEvent = UIEventSubtype.motionShake
+  override var canBecomeFirstResponder: Bool {
+    return true
+  }
+  
   override func viewDidLoad() {
     super.viewDidLoad()
+    self.becomeFirstResponder()
     boutTimeGame.start()
     setUpEventLabels()
+  }
+  
+  override func viewWillLayoutSubviews() {
+    roundEventLabelCorners()
   }
 
   override func didReceiveMemoryWarning() {
@@ -25,6 +33,11 @@ class ViewController: UIViewController {
     // Dispose of any resources that can be recreated.
   }
   
+  override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
+    if motion == .motionShake {
+      print("Shaken!")
+    }
+  }
   func setUpEventLabels() {
     if let currentRound = boutTimeGame.currentRound {
       print(currentRound.isChronological)
@@ -37,6 +50,11 @@ class ViewController: UIViewController {
     }
   }
 
+  func roundEventLabelCorners() {
+    for eventLabel in eventLabels {
+      eventLabel.round(corners: [.bottomLeft, .topLeft], withRadius: 5.0)
+    }
+  }
 
 }
 

@@ -50,7 +50,7 @@ class BoutTimeGame {
     repeat {
       event = self.events[indexOfEvent]
     } while !events.contains(where: { (eventToCheck) -> Bool in
-        eventToCheck.name != event.name
+        eventToCheck.name == event.name
       })
     return event
   }
