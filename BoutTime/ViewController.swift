@@ -35,7 +35,7 @@ class ViewController: UIViewController {
   
   override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
     if motion == .motionShake {
-      print("Shaken!")
+      boutTimeGame.play(sound: isCurrentRoundChronological() ? .CorrectDing : .IncorrectBuzz)
     }
   }
   func setUpEventLabels() {
@@ -53,6 +53,14 @@ class ViewController: UIViewController {
   func roundEventLabelCorners() {
     for eventLabel in eventLabels {
       eventLabel.round(corners: [.bottomLeft, .topLeft], withRadius: 5.0)
+    }
+  }
+  
+  func isCurrentRoundChronological() -> Bool {
+    if let currentRound = boutTimeGame.currentRound {
+      return currentRound.isChronological
+    } else {
+      return false
     }
   }
 

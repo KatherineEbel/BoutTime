@@ -27,6 +27,11 @@ class BoutTimeGame {
   
   func start() {
     newRound()
+    do {
+      try loadGameSounds()
+    } catch let error {
+      fatalError("\(error)")
+    }
   }
   
   func newRound() {
@@ -55,15 +60,14 @@ class BoutTimeGame {
     return event
   }
   
-  func loadGameSounds() {
+  func loadGameSounds() throws {
     for (name, _) in gameSounds {
-      let pathToSoundFile: String?
       let soundURL: URL
-      pathToSoundFile = Bundle.main.path(forResource: name.rawValue, ofType: "wav")
-      if let pathToSoundFile = pathToSoundFile {
-        soundURL = URL(fileURLWithPath: pathToSoundFile)
-        AudioServicesCreateSystemSoundID(soundURL as CFURL, &gameSounds[name]!)
+      guard let pathToSoundFile = Bundle.main.path(forResource: name.rawValue, ofType: "wav") else {
+        throw BoutTimeError.LoudSoundError
       }
+      soundURL = URL(fileURLWithPath: pathToSoundFile)
+      AudioServicesCreateSystemSoundID(soundURL as CFURL, &gameSounds[name]!)
     }
   }
   
