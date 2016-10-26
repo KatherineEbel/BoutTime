@@ -16,11 +16,7 @@ class ViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    do {
-      try boutTimeGame.start()
-    } catch let error {
-      fatalError("\(error)")
-    }
+    boutTimeGame.start()
     setUpEventLabels()
   }
 
@@ -31,6 +27,7 @@ class ViewController: UIViewController {
   
   func setUpEventLabels() {
     if let currentRound = boutTimeGame.currentRound {
+      print(currentRound.isChronological)
       let events = currentRound.events
       for (idx, label) in eventLabels.enumerated() {
         label.text = events[idx].name

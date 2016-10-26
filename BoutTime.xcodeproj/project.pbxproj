@@ -12,11 +12,13 @@
 		274C55131DBBE2E400F7D0D2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 274C55111DBBE2E400F7D0D2 /* Main.storyboard */; };
 		274C55151DBBE2E400F7D0D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 274C55141DBBE2E400F7D0D2 /* Assets.xcassets */; };
 		274C55181DBBE2E400F7D0D2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 274C55161DBBE2E400F7D0D2 /* LaunchScreen.storyboard */; };
-		27A443141DBFC5A30066207F /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A443131DBFC5A30066207F /* Event.swift */; };
+		27A443141DBFC5A30066207F /* HelperTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A443131DBFC5A30066207F /* HelperTypes.swift */; };
 		27A443161DBFC5B00066207F /* Events.plist in Resources */ = {isa = PBXBuildFile; fileRef = 27A443151DBFC5B00066207F /* Events.plist */; };
 		27A4431A1DBFD81A0066207F /* IncorrectBuzz.wav in Resources */ = {isa = PBXBuildFile; fileRef = 27A443181DBFD81A0066207F /* IncorrectBuzz.wav */; };
 		27A4431B1DBFD81A0066207F /* CorrectDing.wav in Resources */ = {isa = PBXBuildFile; fileRef = 27A443191DBFD81A0066207F /* CorrectDing.wav */; };
 		27A4431E1DC007D70066207F /* ErrorTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A4431D1DC007D70066207F /* ErrorTypes.swift */; };
+		446A64AC1DC025F700D569CD /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446A64AB1DC025F700D569CD /* Protocols.swift */; };
+		446A64AE1DC0265800D569CD /* BoutTimeGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446A64AD1DC0265800D569CD /* BoutTimeGame.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,11 +29,13 @@
 		274C55141DBBE2E400F7D0D2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		274C55171DBBE2E400F7D0D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		274C55191DBBE2E400F7D0D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		27A443131DBFC5A30066207F /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		27A443131DBFC5A30066207F /* HelperTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperTypes.swift; sourceTree = "<group>"; };
 		27A443151DBFC5B00066207F /* Events.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Events.plist; sourceTree = "<group>"; };
 		27A443181DBFD81A0066207F /* IncorrectBuzz.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = IncorrectBuzz.wav; sourceTree = "<group>"; };
 		27A443191DBFD81A0066207F /* CorrectDing.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = CorrectDing.wav; sourceTree = "<group>"; };
 		27A4431D1DC007D70066207F /* ErrorTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorTypes.swift; sourceTree = "<group>"; };
+		446A64AB1DC025F700D569CD /* Protocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
+		446A64AD1DC0265800D569CD /* BoutTimeGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoutTimeGame.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,8 +82,10 @@
 		27A443171DBFCF730066207F /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				27A443131DBFC5A30066207F /* Event.swift */,
+				27A443131DBFC5A30066207F /* HelperTypes.swift */,
 				27A4431D1DC007D70066207F /* ErrorTypes.swift */,
+				446A64AB1DC025F700D569CD /* Protocols.swift */,
+				446A64AD1DC0265800D569CD /* BoutTimeGame.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -179,8 +185,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				446A64AC1DC025F700D569CD /* Protocols.swift in Sources */,
 				274C55101DBBE2E400F7D0D2 /* ViewController.swift in Sources */,
-				27A443141DBFC5A30066207F /* Event.swift in Sources */,
+				446A64AE1DC0265800D569CD /* BoutTimeGame.swift in Sources */,
+				27A443141DBFC5A30066207F /* HelperTypes.swift in Sources */,
 				27A4431E1DC007D70066207F /* ErrorTypes.swift in Sources */,
 				274C550E1DBBE2E400F7D0D2 /* AppDelegate.swift in Sources */,
 			);
