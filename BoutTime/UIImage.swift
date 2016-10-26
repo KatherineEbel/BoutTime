@@ -8,8 +8,8 @@
 
 import UIKit
 
-extension UIButton {
-  func image(forResult result: GameEvent) throws -> UIImage {
+extension UIImage {
+  class func image(forResult result: GameEvent) throws -> UIImage {
     let name: String
     switch result {
     case .nextRound(success: let success):

@@ -78,7 +78,7 @@
                                                 <color key="textColor" red="0.090196078430000007" green="0.37647058820000001" blue="0.49019607840000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JDm-cP-rZr">
+                                            <button opaque="NO" tag="101" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JDm-cP-rZr">
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="uGA-Rp-4Mw"/>
                                                 </constraints>
@@ -96,13 +96,13 @@
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="S6K-uu-Kj7">
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DHN-O5-ozT">
+                                                    <button opaque="NO" tag="102" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DHN-O5-ozT">
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="50" id="ljc-hr-AKl"/>
                                                         </constraints>
                                                         <state key="normal" image="up_half"/>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mzD-MG-ZwM">
+                                                    <button opaque="NO" tag="103" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mzD-MG-ZwM">
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="50" id="UMe-mu-5Px"/>
                                                         </constraints>
@@ -125,13 +125,13 @@
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="qSC-h7-fvO">
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o3H-Du-cnp">
+                                                    <button opaque="NO" tag="104" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o3H-Du-cnp">
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="50" id="ISa-WR-9Yo"/>
                                                         </constraints>
                                                         <state key="normal" image="up_half"/>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YMM-F0-IMh">
+                                                    <button opaque="NO" tag="105" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YMM-F0-IMh">
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="50" id="ot1-ZQ-30C"/>
                                                         </constraints>
@@ -152,7 +152,7 @@
                                                 <color key="textColor" red="0.090196078430000007" green="0.37647058820000001" blue="0.49019607840000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YHb-0R-wnM">
+                                            <button opaque="NO" tag="106" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YHb-0R-wnM">
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="Z5e-z2-gwM"/>
                                                 </constraints>
@@ -169,7 +169,7 @@
                                             </label>
                                             <button hidden="YES" opaque="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bG6-bg-PdZ" userLabel="Continue Button">
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="150" id="FVx-FX-hdB"/>
+                                                    <constraint firstAttribute="width" constant="124" id="FVx-FX-hdB"/>
                                                 </constraints>
                                                 <state key="normal" image="play_again"/>
                                             </button>
@@ -192,6 +192,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="nextRoundButton" destination="bG6-bg-PdZ" id="aY1-mI-gMy"/>
                         <outlet property="timerLabel" destination="Elw-Ry-Hyb" id="co6-zY-hU8"/>
                         <outletCollection property="eventLabels" destination="FJk-kB-iNs" collectionClass="NSMutableArray" id="qpg-hb-0pu"/>
                         <outletCollection property="eventLabels" destination="6pE-az-8dm" collectionClass="NSMutableArray" id="Qm0-cF-fLL"/>

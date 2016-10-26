@@ -21,6 +21,15 @@ enum GameEvent {
   case nextRound(success: Bool)
 }
 
+enum EventButtonTag: Int {
+  case event1Down = 101
+  case event2Up = 102
+  case event2Down = 103
+  case event3Up = 104
+  case event3Down = 105
+  case event4Down = 106
+}
+
 struct Event: EventType {
   let name: String
   let date: NSDate

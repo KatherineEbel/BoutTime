@@ -18,7 +18,7 @@
 		27A4431B1DBFD81A0066207F /* CorrectDing.wav in Resources */ = {isa = PBXBuildFile; fileRef = 27A443191DBFD81A0066207F /* CorrectDing.wav */; };
 		27A4431E1DC007D70066207F /* ErrorTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A4431D1DC007D70066207F /* ErrorTypes.swift */; };
 		27A443241DC0EB840066207F /* InstructionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A443231DC0EB840066207F /* InstructionsController.swift */; };
-		4439FCC71DC14BFC006A7814 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4439FCC61DC14BFC006A7814 /* UIButtonExtension.swift */; };
+		4439FCC71DC14BFC006A7814 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4439FCC61DC14BFC006A7814 /* UIImage.swift */; };
 		446A64AC1DC025F700D569CD /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446A64AB1DC025F700D569CD /* Protocols.swift */; };
 		446A64AE1DC0265800D569CD /* BoutTimeGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446A64AD1DC0265800D569CD /* BoutTimeGame.swift */; };
 		446A64B11DC0D1FF00D569CD /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446A64B01DC0D1FF00D569CD /* UIViewExtension.swift */; };
@@ -38,7 +38,7 @@
 		27A443191DBFD81A0066207F /* CorrectDing.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = CorrectDing.wav; sourceTree = "<group>"; };
 		27A4431D1DC007D70066207F /* ErrorTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorTypes.swift; sourceTree = "<group>"; };
 		27A443231DC0EB840066207F /* InstructionsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstructionsController.swift; sourceTree = "<group>"; };
-		4439FCC61DC14BFC006A7814 /* UIButtonExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
+		4439FCC61DC14BFC006A7814 /* UIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		446A64AB1DC025F700D569CD /* Protocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		446A64AD1DC0265800D569CD /* BoutTimeGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoutTimeGame.swift; sourceTree = "<group>"; };
 		446A64B01DC0D1FF00D569CD /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
@@ -128,7 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				446A64B01DC0D1FF00D569CD /* UIViewExtension.swift */,
-				4439FCC61DC14BFC006A7814 /* UIButtonExtension.swift */,
+				4439FCC61DC14BFC006A7814 /* UIImage.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -219,7 +219,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				27A443241DC0EB840066207F /* InstructionsController.swift in Sources */,
-				4439FCC71DC14BFC006A7814 /* UIButtonExtension.swift in Sources */,
+				4439FCC71DC14BFC006A7814 /* UIImage.swift in Sources */,
 				446A64AC1DC025F700D569CD /* Protocols.swift in Sources */,
 				274C55101DBBE2E400F7D0D2 /* ViewController.swift in Sources */,
 				446A64AE1DC0265800D569CD /* BoutTimeGame.swift in Sources */,

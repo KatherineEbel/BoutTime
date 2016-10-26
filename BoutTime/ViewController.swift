@@ -12,6 +12,9 @@ class ViewController: UIViewController {
  
   @IBOutlet var eventLabels: [UILabel]!
   @IBOutlet weak var timerLabel: UILabel!
+  @IBOutlet weak var nextRoundButton: UIButton!
+
+  
   
   let boutTimeGame = BoutTimeGame()
   override var canBecomeFirstResponder: Bool {
@@ -44,6 +47,7 @@ class ViewController: UIViewController {
         let success = isCurrentRoundChronological()
         boutTimeGame.result(forGameEvent: success ? .correctAnswer(sound: .CorrectDing): .incorrectAnswer(sound: .IncorrectBuzz))
         boutTimeGame.endRound(success: success)
+        setupUIForResult(success: success)
       }
     }
   }
@@ -55,6 +59,7 @@ class ViewController: UIViewController {
       boutTimeGame.result(forGameEvent: correct ?
         .correctAnswer(sound: .CorrectDing) : .incorrectAnswer(sound: .IncorrectBuzz))
       boutTimeGame.endRound(success: correct)
+      setupUIForResult(success: correct)
     }
   }
   func setUpEventLabels() {
@@ -72,6 +77,18 @@ class ViewController: UIViewController {
   func setTimerLabel() {
     boutTimeGame.currentRound.timerLabel = self.timerLabel
     boutTimeGame.currentRound.startTimer()
+  }
+  
+  func setupUIForResult(success: Bool) {
+    let image: UIImage
+    timerLabel.isHidden = true
+    do {
+      image = try UIImage.image(forResult: .nextRound(success: success))
+    } catch let error {
+      fatalError("\(error)")
+    }
+    nextRoundButton.setImage(image, for: .normal)
+    nextRoundButton.isHidden = false
   }
 
   func roundEventLabelCorners() {
