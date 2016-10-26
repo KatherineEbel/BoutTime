@@ -13,7 +13,13 @@ import GameKit
 class BoutTimeGame {
   var events: [EventType]
   var gameSounds: [GameSound: SystemSoundID] = [.CorrectDing: 0, .IncorrectBuzz: 0]
-  var currentRound: BoutTimeRound?
+  var currentRound: BoutTimeRound = BoutTimeRound()
+  var numberOfRounds = 5
+  var roundCounter = 0
+  var totalScore = 0
+  var isGameOver: Bool {
+    return roundCounter == numberOfRounds
+  }
   
   init() {
     do {
@@ -35,21 +41,22 @@ class BoutTimeGame {
   }
   
   func newRound() {
-    currentRound = BoutTimeRound()
+    if roundCounter > 1 {
+      currentRound = BoutTimeRound()
+    }
+    roundCounter += 1
     getEventsForCurrentRound()
   }
   
   func getEventsForCurrentRound() {
-    if let currentRound = currentRound {
-      for _ in 1...currentRound.eventsPerRound {
-        let event = getUniqueEvent(forRound: currentRound)
-        currentRound.events.append(event)
-      }
+    for _ in 1...currentRound.eventsPerRound {
+      let event = getUniqueEvent(forRound: currentRound)
+      currentRound.events.append(event)
     }
   }
   
   func getUniqueEvent(forRound round: BoutTimeRound) -> EventType {
-    let indexOfEvent = GKRandomSource.sharedRandom().nextInt(upperBound: self.events.count)
+    let indexOfEvent = GKRandomSource.sharedRandom().nextInt(upperBound: events.count)
     var event: EventType
     var _ = round.events
     repeat {
@@ -75,5 +82,25 @@ class BoutTimeGame {
     if let sound = gameSounds[sound] {
       AudioServicesPlaySystemSound(sound)
     }
+  }
+  
+  func result(forGameEvent event: GameEvent) {
+    switch event {
+    case .correctAnswer(sound: let correctSound):  play(sound: correctSound)
+    case .incorrectAnswer(sound: let incorrectSound): play(sound: incorrectSound)
+    case .nextRound(success: let success): endRound(success: success)
+    case .gameOver: endGame()
+    }
+  }
+  
+  func endRound(success: Bool) {
+    if success {
+      totalScore += 1
+    }
+    isGameOver ? result(forGameEvent: .gameOver) : newRound()
+  }
+  
+  func endGame() {
+    // FIXME: Implement way to finish game
   }
 }

@@ -15,10 +15,10 @@ enum GameSound: String {
 }
 
 enum GameEvent {
-  case incorrectAnswer(GameSound)
-  case correctAnswer(GameSound)
+  case incorrectAnswer(sound: GameSound)
+  case correctAnswer(sound: GameSound)
   case gameOver
-  case nextRound
+  case nextRound(success: Bool)
 }
 
 struct Event: EventType {
@@ -33,11 +33,20 @@ struct Event: EventType {
   }
 }
 
-class BoutTimeRound: Timeable, Chronologicalizable {
+class BoutTimeRound: NSObject, Timeable, Chronologicalizable {
   let eventsPerRound = 4
+  var isComplete = false
   var timeLimit: TimeInterval = 60
   var timer: Timer = Timer()
   var events: [EventType] = []
+  weak var timerLabel: UILabel?
+  var timerCounter: Int = 60 {
+    didSet {
+      if let timerLabel = timerLabel {
+        update(timerLabel: timerLabel, withCounter: timerCounter)
+      }
+    }
+  }
   var isChronological: Bool {
     for event in 0..<(events.count - 1) {
       if !events[event].isBefore(otherEvent: events[event + 1]) {
@@ -48,15 +57,33 @@ class BoutTimeRound: Timeable, Chronologicalizable {
   }
   
   func startTimer() {
-    timer = Timer.scheduledTimer(timeInterval: timeLimit, target: self, selector: Selector(("roundOver")), userInfo: nil, repeats: false)
+    isComplete = false
+    timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(BoutTimeRound.decrementCounter), userInfo: nil, repeats: true)
   }
   
   func stopTimer() {
     timer.invalidate()
   }
   
+  func decrementCounter() {
+    timerCounter -= 1
+    if timerCounter == 0 {
+      roundOver()
+    }
+  }
+  
+  func update(timerLabel label: UILabel, withCounter counter: Int) {
+    label.text = counter >= 10 ? "0:\(counter)" : "0:0\(counter)"
+  }
+  
   func roundOver() {
-    print("Round Over!")
+    isComplete = true
+    stopTimer()
+  }
+  
+  deinit {
+    print("Current Round deinit")
+    timerLabel = nil
   }
 }
 

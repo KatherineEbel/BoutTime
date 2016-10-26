@@ -11,8 +11,9 @@ import UIKit
 class ViewController: UIViewController {
  
   @IBOutlet var eventLabels: [UILabel]!
+  @IBOutlet weak var timerLabel: UILabel!
+  
   let boutTimeGame = BoutTimeGame()
-  let shakeEvent = UIEventSubtype.motionShake
   override var canBecomeFirstResponder: Bool {
     return true
   }
@@ -21,7 +22,8 @@ class ViewController: UIViewController {
     super.viewDidLoad()
     self.becomeFirstResponder()
     boutTimeGame.start()
-    setUpEventLabels()
+    timerLabel.addObserver(self, forKeyPath: "text", options: [.new], context: nil)
+    setupUI()
   }
   
   override func viewWillLayoutSubviews() {
@@ -33,21 +35,43 @@ class ViewController: UIViewController {
     // Dispose of any resources that can be recreated.
   }
   
+  override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+    if keyPath == "text" {
+      guard let text = change?[.newKey] as? String else {
+        return
+      }
+      if text == "0:00" {
+        let success = isCurrentRoundChronological()
+        boutTimeGame.result(forGameEvent: success ? .correctAnswer(sound: .CorrectDing): .incorrectAnswer(sound: .IncorrectBuzz))
+        boutTimeGame.endRound(success: success)
+      }
+    }
+  }
+  
   override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
     if motion == .motionShake {
-      boutTimeGame.play(sound: isCurrentRoundChronological() ? .CorrectDing : .IncorrectBuzz)
+      let correct = boutTimeGame.currentRound.isChronological
+      boutTimeGame.currentRound.roundOver()
+      boutTimeGame.result(forGameEvent: correct ?
+        .correctAnswer(sound: .CorrectDing) : .incorrectAnswer(sound: .IncorrectBuzz))
+      boutTimeGame.endRound(success: correct)
     }
   }
   func setUpEventLabels() {
-    if let currentRound = boutTimeGame.currentRound {
-      print(currentRound.isChronological)
-      let events = currentRound.events
-      for (idx, label) in eventLabels.enumerated() {
-        label.text = events[idx].name
-      }
-    } else {
-      print("Can't setup labels")
+    let events = boutTimeGame.currentRound.events
+    for (idx, label) in eventLabels.enumerated() {
+      label.text = events[idx].name
     }
+  }
+  
+  func setupUI() {
+    setUpEventLabels()
+    setTimerLabel()
+  }
+  
+  func setTimerLabel() {
+    boutTimeGame.currentRound.timerLabel = self.timerLabel
+    boutTimeGame.currentRound.startTimer()
   }
 
   func roundEventLabelCorners() {
@@ -57,11 +81,7 @@ class ViewController: UIViewController {
   }
   
   func isCurrentRoundChronological() -> Bool {
-    if let currentRound = boutTimeGame.currentRound {
-      return currentRound.isChronological
-    } else {
-      return false
-    }
+    return boutTimeGame.currentRound.isChronological
   }
 
 }
