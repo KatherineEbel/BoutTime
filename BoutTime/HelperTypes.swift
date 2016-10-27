@@ -15,8 +15,8 @@ enum GameSound: String {
 }
 
 enum GameEvent {
-  case incorrectAnswer(sound: GameSound)
-  case correctAnswer(sound: GameSound)
+  case incorrectAnswer
+  case correctAnswer
   case gameOver
   case nextRound(success: Bool)
 }
@@ -35,10 +35,16 @@ struct Event: EventType {
   let date: NSDate
   let urlString: String
   
-  func isBefore(otherEvent event: EventType) -> Bool {
+  func isBefore(otherEvent event: Event) -> Bool {
     let earlierDate = date.earlierDate(event.date as Date)
     // if earlier date is equal to self.date then self is earlier than event argument
     return date as Date == earlierDate ? true : false
+  }
+  static func == (lhs: Event, rhs: Event) -> Bool {
+    return
+      lhs.name == rhs.name &&
+        lhs.date == rhs.date &&
+        lhs.urlString == rhs.urlString
   }
 }
 
@@ -47,7 +53,7 @@ class BoutTimeRound: NSObject, Timeable, Chronologicalizable {
   var isComplete = false
   var timeLimit: TimeInterval = 60
   var timer: Timer = Timer()
-  var events: [EventType] = []
+  var events: [Event] = []
   weak var timerLabel: UILabel?
   var timerCounter: Int = 60 {
     didSet {
@@ -66,11 +72,11 @@ class BoutTimeRound: NSObject, Timeable, Chronologicalizable {
   }
   
   func startTimer() {
-    isComplete = false
     timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(BoutTimeRound.decrementCounter), userInfo: nil, repeats: true)
   }
   
   func stopTimer() {
+    print("Stopping Timer")
     timer.invalidate()
   }
   
@@ -88,6 +94,12 @@ class BoutTimeRound: NSObject, Timeable, Chronologicalizable {
   func roundOver() {
     isComplete = true
     stopTimer()
+  }
+  
+  func reset() {
+    events = []
+    timerCounter = 60
+    isComplete = false
   }
   
   deinit {
@@ -112,8 +124,8 @@ class PlistConverter {
 }
 
 class EventUnarchiver {
-  class func eventsFromDictionary(dictionary: [String: AnyObject]) throws -> [EventType] {
-    var events: [EventType] = []
+  class func eventsFromDictionary(dictionary: [String: AnyObject]) throws -> [Event] {
+    var events: [Event] = []
     for (_, value) in dictionary {
       if let eventDict = value as? [String: AnyObject],
         let name = eventDict["name"] as? String, let date = eventDict["date"] as? NSDate,

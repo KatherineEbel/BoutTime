@@ -172,6 +172,9 @@
                                                     <constraint firstAttribute="width" constant="124" id="FVx-FX-hdB"/>
                                                 </constraints>
                                                 <state key="normal" image="play_again"/>
+                                                <connections>
+                                                    <action selector="nextRound:" destination="A7x-OG-TMV" eventType="touchUpInside" id="wdS-SZ-8ca"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shake to complete" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HaW-9k-k9P">
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>

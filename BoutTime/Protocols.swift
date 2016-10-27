@@ -8,10 +8,10 @@
 
 import Foundation
 
-protocol EventType {
+protocol EventType: Equatable {
   var name: String { get }
   var date: NSDate { get }
-  func isBefore(otherEvent event: EventType) -> Bool
+  var urlString: String { get }
 }
 
 protocol Timeable {
@@ -23,6 +23,6 @@ protocol Timeable {
 }
 
 protocol Chronologicalizable {
-  var events: [EventType] { get set }
+  var events: [Event] { get set }
   var isChronological: Bool { get }
 }

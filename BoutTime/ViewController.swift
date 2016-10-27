@@ -38,28 +38,28 @@ class ViewController: UIViewController {
     // Dispose of any resources that can be recreated.
   }
   
+  @IBAction func nextRound(_ sender: UIButton) {
+    if boutTimeGame.isGameOver {
+      boutTimeGame.endGame()
+    } else {
+      setupUI()
+    }
+  }
+  
   override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
     if keyPath == "text" {
       guard let text = change?[.newKey] as? String else {
         return
       }
       if text == "0:00" {
-        let success = isCurrentRoundChronological()
-        boutTimeGame.result(forGameEvent: success ? .correctAnswer(sound: .CorrectDing): .incorrectAnswer(sound: .IncorrectBuzz))
-        boutTimeGame.endRound(success: success)
-        setupUIForResult(success: success)
+        endCurrentRound()
       }
     }
   }
   
   override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
     if motion == .motionShake {
-      let correct = boutTimeGame.currentRound.isChronological
-      boutTimeGame.currentRound.roundOver()
-      boutTimeGame.result(forGameEvent: correct ?
-        .correctAnswer(sound: .CorrectDing) : .incorrectAnswer(sound: .IncorrectBuzz))
-      boutTimeGame.endRound(success: correct)
-      setupUIForResult(success: correct)
+      endCurrentRound()
     }
   }
   func setUpEventLabels() {
@@ -69,7 +69,18 @@ class ViewController: UIViewController {
     }
   }
   
+  func endCurrentRound() {
+    let isCorrectAnswer = boutTimeGame.currentRound.isChronological
+    boutTimeGame.currentRound.roundOver()
+    boutTimeGame.play(sound: isCorrectAnswer ? .CorrectDing : .IncorrectBuzz)
+    boutTimeGame.endRound(success: isCorrectAnswer)
+    setupUIForResult(success: isCorrectAnswer)
+  }
+  
   func setupUI() {
+    print(boutTimeGame.currentRound.events.count)
+    timerLabel.isHidden = false
+    nextRoundButton.isHidden = true
     setUpEventLabels()
     setTimerLabel()
   }
@@ -96,10 +107,5 @@ class ViewController: UIViewController {
       eventLabel.round(corners: [.bottomLeft, .topLeft], withRadius: 5.0)
     }
   }
-  
-  func isCurrentRoundChronological() -> Bool {
-    return boutTimeGame.currentRound.isChronological
-  }
-
 }
 

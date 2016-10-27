@@ -11,7 +11,7 @@ import AudioToolbox
 import GameKit
 
 class BoutTimeGame {
-  var events: [EventType]
+  var events: [Event]
   var gameSounds: [GameSound: SystemSoundID] = [.CorrectDing: 0, .IncorrectBuzz: 0]
   var currentRound: BoutTimeRound = BoutTimeRound()
   var numberOfRounds = 5
@@ -39,32 +39,34 @@ class BoutTimeGame {
       fatalError("\(error)")
     }
   }
-  
   func newRound() {
-    if roundCounter > 1 {
-      currentRound = BoutTimeRound()
+    currentRound.reset()
+    do {
+      currentRound.events = try getEventsForCurrentRound()
+    } catch let error {
+      fatalError("\(error)")
     }
-    roundCounter += 1
-    getEventsForCurrentRound()
   }
   
-  func getEventsForCurrentRound() {
+  func getEventsForCurrentRound() throws -> [Event] {
+    var eventsForRound: [Event] = []
     for _ in 1...currentRound.eventsPerRound {
-      let event = getUniqueEvent(forRound: currentRound)
-      currentRound.events.append(event)
+      let event = getUniqueEvent(forEvents: eventsForRound)
+      eventsForRound.append(event)
     }
+    guard eventsForRound.count == currentRound.eventsPerRound else {
+      throw BoutTimeError.StartRoundError
+    }
+    return eventsForRound
   }
   
-  func getUniqueEvent(forRound round: BoutTimeRound) -> EventType {
+  func getUniqueEvent(forEvents roundEvents: [Event]) -> Event {
     let indexOfEvent = GKRandomSource.sharedRandom().nextInt(upperBound: events.count)
-    var event: EventType
-    var _ = round.events
+    var roundEvent: Event
     repeat {
-      event = self.events[indexOfEvent]
-    } while !events.contains(where: { (eventToCheck) -> Bool in
-        eventToCheck.name == event.name
-      })
-    return event
+      roundEvent = self.events[indexOfEvent]
+    } while roundEvents.contains(roundEvent)
+    return roundEvent
   }
   
   func loadGameSounds() throws {
@@ -84,23 +86,16 @@ class BoutTimeGame {
     }
   }
   
-  func result(forGameEvent event: GameEvent) {
-    switch event {
-    case .correctAnswer(sound: let correctSound):  play(sound: correctSound)
-    case .incorrectAnswer(sound: let incorrectSound): play(sound: incorrectSound)
-    case .nextRound(success: let success): endRound(success: success)
-    case .gameOver: endGame()
-    }
-  }
-  
   func endRound(success: Bool) {
     if success {
       totalScore += 1
     }
-    isGameOver ? result(forGameEvent: .gameOver) : newRound()
+    roundCounter += 1
+    isGameOver ? endGame() : newRound()
   }
   
   func endGame() {
+    print("Game Over")
     // FIXME: Implement way to finish game
   }
 }
