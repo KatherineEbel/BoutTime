@@ -30,6 +30,11 @@ enum EventButtonTag: Int {
   case event4Up = 106
 }
 
+enum GamePrompt: String {
+  case shakeToComplete = "Shake to complete"
+  case tapToLearnMore = "Tap events to learn more"
+}
+
 struct Event: EventType {
   let name: String
   let date: NSDate

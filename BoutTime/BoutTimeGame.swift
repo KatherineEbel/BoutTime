@@ -15,11 +15,11 @@ class BoutTimeGame {
   var gameSounds: [GameSound: SystemSoundID] = [.CorrectDing: 0, .IncorrectBuzz: 0]
   var currentRound: BoutTimeRound = BoutTimeRound()
   var currentRoundEventIndexes: [Int] = []
-  var numberOfRounds = 5
+  var roundsPerGame = 5
   var roundCounter = 0
   var totalScore = 0
   var isGameOver: Bool {
-    return roundCounter == numberOfRounds
+    return roundCounter == roundsPerGame
   }
   
   init() {
@@ -33,7 +33,6 @@ class BoutTimeGame {
   }
   
   func start() {
-    newRound()
     do {
       try loadGameSounds()
     } catch let error {
@@ -90,11 +89,17 @@ class BoutTimeGame {
     }
     roundCounter += 1
     currentRound.roundOver()
-    isGameOver ? endGame() : newRound()
+    if !isGameOver {
+      newRound()
+    }
   }
   
   func endGame() {
-    print("Game Over")
-    // FIXME: Implement way to finish game
+    totalScore = 0
+    roundCounter = 0
+  }
+  
+  func gameResult() -> String {
+    return "\(totalScore) / \(roundsPerGame)"
   }
 }

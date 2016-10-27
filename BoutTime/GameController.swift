@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  GameController.swift
 //  BoutTime
 //
 //  Created by Katherine Ebel on 10/22/16.
@@ -8,29 +8,31 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class GameController: UIViewController {
  
   @IBOutlet var eventLabels: [UILabel]!
   @IBOutlet var eventButtons: [UIButton]!
+  @IBOutlet weak var promptLabel: UILabel!
   
   @IBOutlet weak var timerLabel: UILabel!
+  
   @IBOutlet weak var nextRoundButton: UIButton!
 
-  let boutTimeGame: BoutTimeGame
+  let boutTimeGame: BoutTimeGame = BoutTimeGame()
   
-  required init?(coder aDecoder: NSCoder) {
-    boutTimeGame = BoutTimeGame()
-    super.init(coder: aDecoder)
-  }
   override var canBecomeFirstResponder: Bool {
     return true
   }
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.becomeFirstResponder()
     boutTimeGame.start()
+    self.becomeFirstResponder()
     timerLabel.addObserver(self, forKeyPath: "text", options: [.new], context: nil)
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    boutTimeGame.newRound()
     setupUI()
   }
   
@@ -46,19 +48,45 @@ class ViewController: UIViewController {
   
   @IBAction func nextRound(_ sender: UIButton) {
     if boutTimeGame.isGameOver {
-      boutTimeGame.endGame()
+      print("Game Over")
+      performSegue(withIdentifier: "endGame", sender: self)
     } else {
       setupUI()
     }
   }
+  
   @IBAction func swapEventsForAction(_ sender: UIButton) {
     let eventButtonTag = EventButtonTag(rawValue: sender.tag)
     if let eventButtonTag = eventButtonTag {
+      do {
+        try sender.setImage(UIImage.imageForEventButton(withTag: eventButtonTag, isSelected: true), for: .normal)
+        for eventButton in eventButtons {
+          if eventButton.tag != eventButtonTag.rawValue {
+            let tag = EventButtonTag(rawValue: eventButton.tag)
+            let image = try UIImage.imageForEventButton(withTag: tag!, isSelected: false)
+            eventButton.setImage(image, for: .normal)
+          }
+        }
+      } catch let error {
+        fatalError("\(error)")
+      }
       let (oldIndex, newIndex) = indexesForEvent(withButtonTag: eventButtonTag)
       boutTimeGame.swapEvents(oldEventIndex: oldIndex, newEventIndex: newIndex)
       setUpEventLabels()
     }
     
+  }
+  
+  func deselectEventButtons() {
+    for eventButton in eventButtons {
+      let tag = EventButtonTag(rawValue: eventButton.tag)
+      do {
+        let image = try UIImage.imageForEventButton(withTag: tag!, isSelected: false)
+        eventButton.setImage(image, for: .normal)
+      } catch let error {
+        fatalError("\(error)")
+      }
+    }
   }
   
   override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
@@ -88,12 +116,14 @@ class ViewController: UIViewController {
   func resultForRound() {
     let isChronological = boutTimeGame.currentRound.isChronological
     boutTimeGame.play(sound: isChronological ? .CorrectDing : .IncorrectBuzz)
+    boutTimeGame.endRound(success: isChronological)
     setupUIForResult(success: isChronological)
   }
   
   func setupUI() {
     timerLabel.isHidden = false
     nextRoundButton.isHidden = true
+    promptLabel.text = GamePrompt.shakeToComplete.rawValue
     setUpEventLabels()
     setTimerLabel()
   }
@@ -104,24 +134,24 @@ class ViewController: UIViewController {
   }
   
   func setupUIForResult(success: Bool) {
-    print("setting up for result")
     let image: UIImage
+    deselectEventButtons()
     timerLabel.isHidden = true
+    promptLabel.text = GamePrompt.tapToLearnMore.rawValue
     do {
-      image = try UIImage.image(forResult: .nextRound(success: success))
+      image = try UIImage.image(forEvent: .nextRound(success: success))
     } catch let error {
       print("Couldn't get image")
       fatalError("\(error)")
     }
     nextRoundButton.setImage(image, for: .normal)
     nextRoundButton.isHidden = false
-    boutTimeGame.endRound(success: success)
   }
   
   func indexesForEvent(withButtonTag tag: EventButtonTag) -> (oldIndex: Int, newIndex: Int) {
     let indexes: (Int, Int)
     switch tag {
-    case .event1Down: indexes = (0, 1)
+      case .event1Down: indexes = (0, 1)
       case .event2Up: indexes = (1, 0)
       case .event2Down: indexes = (1, 2)
       case .event3Up: indexes = (2, 1)
@@ -135,6 +165,17 @@ class ViewController: UIViewController {
     for eventLabel in eventLabels {
       eventLabel.round(corners: [.bottomLeft, .topLeft], withRadius: 5.0)
     }
+  }
+  
+  // Navigation
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    let controller = segue.destination as! GameResultController
+    controller.result = boutTimeGame.gameResult()
+    boutTimeGame.endGame()
+  }
+  
+  deinit {
+    print("Game Controller Deinit")
   }
 }
 

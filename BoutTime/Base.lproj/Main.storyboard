@@ -49,17 +49,17 @@
                         </constraints>
                     </view>
                     <connections>
-                        <segue destination="A7x-OG-TMV" kind="show" identifier="startGame" id="YU8-KA-20V"/>
+                        <segue destination="A7x-OG-TMV" kind="show" identifier="startGame" id="xT2-m5-igy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WHU-Sj-zKB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-961" y="-102"/>
+            <point key="canvasLocation" x="-606" y="-102"/>
         </scene>
-        <!--View Controller-->
+        <!--Game Controller-->
         <scene sceneID="8Jd-OU-PcR">
             <objects>
-                <viewController id="A7x-OG-TMV" customClass="ViewController" customModule="BoutTime" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="A7x-OG-TMV" customClass="GameController" customModule="BoutTime" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="huP-U1-MK4"/>
                         <viewControllerLayoutGuide type="bottom" id="dzf-d7-dho"/>
@@ -78,7 +78,7 @@
                                                 <color key="textColor" red="0.090196078430000007" green="0.37647058820000001" blue="0.49019607840000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" tag="101" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JDm-cP-rZr">
+                                            <button opaque="NO" tag="101" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" highlighted="YES" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JDm-cP-rZr">
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="uGA-Rp-4Mw"/>
                                                 </constraints>
@@ -104,6 +104,8 @@
                                                             <constraint firstAttribute="width" constant="50" id="ljc-hr-AKl"/>
                                                         </constraints>
                                                         <state key="normal" image="up_half"/>
+                                                        <state key="selected" image="up_half_selected"/>
+                                                        <state key="focused" image="up_half_selected"/>
                                                         <connections>
                                                             <action selector="swapEventsForAction:" destination="A7x-OG-TMV" eventType="touchUpInside" id="mLI-x4-omA"/>
                                                         </connections>
@@ -113,6 +115,7 @@
                                                             <constraint firstAttribute="width" constant="50" id="UMe-mu-5Px"/>
                                                         </constraints>
                                                         <state key="normal" image="down_half"/>
+                                                        <state key="focused" image="down_half_selected"/>
                                                         <connections>
                                                             <action selector="swapEventsForAction:" destination="A7x-OG-TMV" eventType="touchUpInside" id="tjJ-zN-4C4"/>
                                                         </connections>
@@ -139,6 +142,7 @@
                                                             <constraint firstAttribute="width" constant="50" id="ISa-WR-9Yo"/>
                                                         </constraints>
                                                         <state key="normal" image="up_half"/>
+                                                        <state key="focused" image="up_half_selected"/>
                                                         <connections>
                                                             <action selector="swapEventsForAction:" destination="A7x-OG-TMV" eventType="touchUpInside" id="osP-eo-29z"/>
                                                         </connections>
@@ -148,6 +152,7 @@
                                                             <constraint firstAttribute="width" constant="50" id="ot1-ZQ-30C"/>
                                                         </constraints>
                                                         <state key="normal" image="down_half"/>
+                                                        <state key="focused" image="down_half_selected"/>
                                                         <connections>
                                                             <action selector="swapEventsForAction:" destination="A7x-OG-TMV" eventType="touchUpInside" id="RaP-Qj-nY4"/>
                                                         </connections>
@@ -172,6 +177,7 @@
                                                     <constraint firstAttribute="width" constant="50" id="Z5e-z2-gwM"/>
                                                 </constraints>
                                                 <state key="normal" image="up_full"/>
+                                                <state key="focused" image="up_full_selected"/>
                                                 <connections>
                                                     <action selector="swapEventsForAction:" destination="A7x-OG-TMV" eventType="touchUpInside" id="Df2-b3-H6x"/>
                                                 </connections>
@@ -214,6 +220,7 @@
                     </view>
                     <connections>
                         <outlet property="nextRoundButton" destination="bG6-bg-PdZ" id="aY1-mI-gMy"/>
+                        <outlet property="promptLabel" destination="HaW-9k-k9P" id="reV-dX-DY8"/>
                         <outlet property="timerLabel" destination="Elw-Ry-Hyb" id="co6-zY-hU8"/>
                         <outletCollection property="eventLabels" destination="FJk-kB-iNs" collectionClass="NSMutableArray" id="qpg-hb-0pu"/>
                         <outletCollection property="eventLabels" destination="6pE-az-8dm" collectionClass="NSMutableArray" id="Qm0-cF-fLL"/>
@@ -225,18 +232,77 @@
                         <outletCollection property="eventButtons" destination="o3H-Du-cnp" collectionClass="NSMutableArray" id="Y7a-lI-CEb"/>
                         <outletCollection property="eventButtons" destination="YMM-F0-IMh" collectionClass="NSMutableArray" id="cAy-Zh-hbV"/>
                         <outletCollection property="eventButtons" destination="YHb-0R-wnM" collectionClass="NSMutableArray" id="BzU-3n-bqN"/>
+                        <segue destination="Li3-4R-Zmg" kind="presentation" identifier="endGame" modalTransitionStyle="flipHorizontal" id="ieL-gD-hjs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tE1-oh-JNR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-76" y="-102"/>
+            <point key="canvasLocation" x="84" y="-102"/>
+        </scene>
+        <!--Game Result Controller-->
+        <scene sceneID="kos-nd-GmD">
+            <objects>
+                <viewController id="Li3-4R-Zmg" customClass="GameResultController" customModule="BoutTime" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="l6o-EI-Jfm"/>
+                        <viewControllerLayoutGuide type="bottom" id="AaR-0l-zAr"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="69j-rP-iPP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="djL-6k-bjI">
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="n5b-Wq-bJM">
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gTd-LK-Epj">
+                                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                                <color key="textColor" red="0.21960784310000001" green="0.56470588239999997" blue="0.70196078429999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4/6" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="huh-gh-J60">
+                                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="puF-WR-mTP">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="BFj-Lm-AcE"/>
+                                            <constraint firstAttribute="width" constant="180" id="Img-Tj-Mop"/>
+                                        </constraints>
+                                        <state key="normal" image="play_again"/>
+                                        <connections>
+                                            <action selector="playAgain" destination="Li3-4R-Zmg" eventType="touchUpInside" id="FPh-PI-tPI"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.1647058824" blue="0.2901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="djL-6k-bjI" firstAttribute="centerX" secondItem="69j-rP-iPP" secondAttribute="centerX" id="JTn-75-krP"/>
+                            <constraint firstItem="djL-6k-bjI" firstAttribute="centerY" secondItem="69j-rP-iPP" secondAttribute="centerY" id="gZ7-5M-h70"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="scoreLabel" destination="huh-gh-J60" id="CPr-7g-U3e"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="p0x-dH-6q8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="834" y="-102"/>
         </scene>
     </scenes>
     <resources>
         <image name="down_full" width="158" height="457"/>
         <image name="down_half" width="158" height="229"/>
+        <image name="down_half_selected" width="158" height="229"/>
         <image name="play_again" width="450" height="142"/>
         <image name="up_full" width="158" height="457"/>
+        <image name="up_full_selected" width="158" height="457"/>
         <image name="up_half" width="158" height="229"/>
+        <image name="up_half_selected" width="158" height="229"/>
     </resources>
 </document>
