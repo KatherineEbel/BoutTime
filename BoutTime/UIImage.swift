@@ -17,6 +17,7 @@ extension UIImage {
     default: name = "play_again"
     }
     guard let image = UIImage(named: name) else {
+      print("Couldn't get image")
       throw ResourceError.InvalidResource
     }
     return image

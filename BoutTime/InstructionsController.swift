@@ -31,6 +31,10 @@ class InstructionsController: UIViewController {
     }
   }
   
+  deinit {
+    print("InstructionsController Deinit")
+  }
+  
 
   /*
   // MARK: - Navigation

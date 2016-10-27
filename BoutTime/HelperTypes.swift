@@ -27,7 +27,7 @@ enum EventButtonTag: Int {
   case event2Down = 103
   case event3Up = 104
   case event3Down = 105
-  case event4Down = 106
+  case event4Up = 106
 }
 
 struct Event: EventType {
@@ -50,7 +50,6 @@ struct Event: EventType {
 
 class BoutTimeRound: NSObject, Timeable, Chronologicalizable {
   let eventsPerRound = 4
-  var isComplete = false
   var timeLimit: TimeInterval = 60
   var timer: Timer = Timer()
   var events: [Event] = []
@@ -76,7 +75,6 @@ class BoutTimeRound: NSObject, Timeable, Chronologicalizable {
   }
   
   func stopTimer() {
-    print("Stopping Timer")
     timer.invalidate()
   }
   
@@ -92,14 +90,12 @@ class BoutTimeRound: NSObject, Timeable, Chronologicalizable {
   }
   
   func roundOver() {
-    isComplete = true
     stopTimer()
   }
   
   func reset() {
     events = []
     timerCounter = 60
-    isComplete = false
   }
   
   deinit {

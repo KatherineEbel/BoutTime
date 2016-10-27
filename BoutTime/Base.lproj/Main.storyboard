@@ -83,6 +83,9 @@
                                                     <constraint firstAttribute="width" constant="50" id="uGA-Rp-4Mw"/>
                                                 </constraints>
                                                 <state key="normal" image="down_full"/>
+                                                <connections>
+                                                    <action selector="swapEventsForAction:" destination="A7x-OG-TMV" eventType="touchUpInside" id="2JH-3x-Ngl"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -101,12 +104,18 @@
                                                             <constraint firstAttribute="width" constant="50" id="ljc-hr-AKl"/>
                                                         </constraints>
                                                         <state key="normal" image="up_half"/>
+                                                        <connections>
+                                                            <action selector="swapEventsForAction:" destination="A7x-OG-TMV" eventType="touchUpInside" id="mLI-x4-omA"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" tag="103" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mzD-MG-ZwM">
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="50" id="UMe-mu-5Px"/>
                                                         </constraints>
                                                         <state key="normal" image="down_half"/>
+                                                        <connections>
+                                                            <action selector="swapEventsForAction:" destination="A7x-OG-TMV" eventType="touchUpInside" id="tjJ-zN-4C4"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
@@ -130,12 +139,18 @@
                                                             <constraint firstAttribute="width" constant="50" id="ISa-WR-9Yo"/>
                                                         </constraints>
                                                         <state key="normal" image="up_half"/>
+                                                        <connections>
+                                                            <action selector="swapEventsForAction:" destination="A7x-OG-TMV" eventType="touchUpInside" id="osP-eo-29z"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" tag="105" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YMM-F0-IMh">
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="50" id="ot1-ZQ-30C"/>
                                                         </constraints>
                                                         <state key="normal" image="down_half"/>
+                                                        <connections>
+                                                            <action selector="swapEventsForAction:" destination="A7x-OG-TMV" eventType="touchUpInside" id="RaP-Qj-nY4"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
@@ -157,6 +172,9 @@
                                                     <constraint firstAttribute="width" constant="50" id="Z5e-z2-gwM"/>
                                                 </constraints>
                                                 <state key="normal" image="up_full"/>
+                                                <connections>
+                                                    <action selector="swapEventsForAction:" destination="A7x-OG-TMV" eventType="touchUpInside" id="Df2-b3-H6x"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -188,7 +206,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.1647058824" blue="0.2901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="jeX-Qa-fPO" firstAttribute="top" secondItem="huP-U1-MK4" secondAttribute="bottom" id="LRb-og-Gcg"/>
+                            <constraint firstItem="jeX-Qa-fPO" firstAttribute="top" secondItem="huP-U1-MK4" secondAttribute="bottom" constant="20" id="LRb-og-Gcg"/>
                             <constraint firstItem="dzf-d7-dho" firstAttribute="top" secondItem="jeX-Qa-fPO" secondAttribute="bottom" id="rsA-jA-Jze"/>
                             <constraint firstAttribute="trailingMargin" secondItem="jeX-Qa-fPO" secondAttribute="trailing" id="vWe-Jf-QKs"/>
                             <constraint firstItem="jeX-Qa-fPO" firstAttribute="leading" secondItem="Xau-vY-IfM" secondAttribute="leadingMargin" id="yTP-xL-WdF"/>
@@ -201,6 +219,12 @@
                         <outletCollection property="eventLabels" destination="6pE-az-8dm" collectionClass="NSMutableArray" id="Qm0-cF-fLL"/>
                         <outletCollection property="eventLabels" destination="YKC-jJ-O4g" collectionClass="NSMutableArray" id="7x5-o8-cGK"/>
                         <outletCollection property="eventLabels" destination="d6H-Z6-CGz" collectionClass="NSMutableArray" id="EPR-8u-jB8"/>
+                        <outletCollection property="eventButtons" destination="JDm-cP-rZr" collectionClass="NSMutableArray" id="Mh7-SK-bMB"/>
+                        <outletCollection property="eventButtons" destination="DHN-O5-ozT" collectionClass="NSMutableArray" id="P8s-oA-xNE"/>
+                        <outletCollection property="eventButtons" destination="mzD-MG-ZwM" collectionClass="NSMutableArray" id="pJc-1h-8DY"/>
+                        <outletCollection property="eventButtons" destination="o3H-Du-cnp" collectionClass="NSMutableArray" id="Y7a-lI-CEb"/>
+                        <outletCollection property="eventButtons" destination="YMM-F0-IMh" collectionClass="NSMutableArray" id="cAy-Zh-hbV"/>
+                        <outletCollection property="eventButtons" destination="YHb-0R-wnM" collectionClass="NSMutableArray" id="BzU-3n-bqN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tE1-oh-JNR" userLabel="First Responder" sceneMemberID="firstResponder"/>

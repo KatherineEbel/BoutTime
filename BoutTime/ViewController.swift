@@ -11,12 +11,17 @@ import UIKit
 class ViewController: UIViewController {
  
   @IBOutlet var eventLabels: [UILabel]!
+  @IBOutlet var eventButtons: [UIButton]!
+  
   @IBOutlet weak var timerLabel: UILabel!
   @IBOutlet weak var nextRoundButton: UIButton!
 
+  let boutTimeGame: BoutTimeGame
   
-  
-  let boutTimeGame = BoutTimeGame()
+  required init?(coder aDecoder: NSCoder) {
+    boutTimeGame = BoutTimeGame()
+    super.init(coder: aDecoder)
+  }
   override var canBecomeFirstResponder: Bool {
     return true
   }
@@ -36,6 +41,7 @@ class ViewController: UIViewController {
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
     // Dispose of any resources that can be recreated.
+    print("Memory Warning")
   }
   
   @IBAction func nextRound(_ sender: UIButton) {
@@ -45,6 +51,15 @@ class ViewController: UIViewController {
       setupUI()
     }
   }
+  @IBAction func swapEventsForAction(_ sender: UIButton) {
+    let eventButtonTag = EventButtonTag(rawValue: sender.tag)
+    if let eventButtonTag = eventButtonTag {
+      let (oldIndex, newIndex) = indexesForEvent(withButtonTag: eventButtonTag)
+      boutTimeGame.swapEvents(oldEventIndex: oldIndex, newEventIndex: newIndex)
+      setUpEventLabels()
+    }
+    
+  }
   
   override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
     if keyPath == "text" {
@@ -52,16 +67,17 @@ class ViewController: UIViewController {
         return
       }
       if text == "0:00" {
-        endCurrentRound()
+        resultForRound()
       }
     }
   }
   
   override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
     if motion == .motionShake {
-      endCurrentRound()
+      resultForRound()
     }
   }
+  
   func setUpEventLabels() {
     let events = boutTimeGame.currentRound.events
     for (idx, label) in eventLabels.enumerated() {
@@ -69,16 +85,13 @@ class ViewController: UIViewController {
     }
   }
   
-  func endCurrentRound() {
-    let isCorrectAnswer = boutTimeGame.currentRound.isChronological
-    boutTimeGame.currentRound.roundOver()
-    boutTimeGame.play(sound: isCorrectAnswer ? .CorrectDing : .IncorrectBuzz)
-    boutTimeGame.endRound(success: isCorrectAnswer)
-    setupUIForResult(success: isCorrectAnswer)
+  func resultForRound() {
+    let isChronological = boutTimeGame.currentRound.isChronological
+    boutTimeGame.play(sound: isChronological ? .CorrectDing : .IncorrectBuzz)
+    setupUIForResult(success: isChronological)
   }
   
   func setupUI() {
-    print(boutTimeGame.currentRound.events.count)
     timerLabel.isHidden = false
     nextRoundButton.isHidden = true
     setUpEventLabels()
@@ -91,15 +104,31 @@ class ViewController: UIViewController {
   }
   
   func setupUIForResult(success: Bool) {
+    print("setting up for result")
     let image: UIImage
     timerLabel.isHidden = true
     do {
       image = try UIImage.image(forResult: .nextRound(success: success))
     } catch let error {
+      print("Couldn't get image")
       fatalError("\(error)")
     }
     nextRoundButton.setImage(image, for: .normal)
     nextRoundButton.isHidden = false
+    boutTimeGame.endRound(success: success)
+  }
+  
+  func indexesForEvent(withButtonTag tag: EventButtonTag) -> (oldIndex: Int, newIndex: Int) {
+    let indexes: (Int, Int)
+    switch tag {
+    case .event1Down: indexes = (0, 1)
+      case .event2Up: indexes = (1, 0)
+      case .event2Down: indexes = (1, 2)
+      case .event3Up: indexes = (2, 1)
+      case .event3Down: indexes = (2, 3)
+      case .event4Up: indexes = (3, 2)
+    }
+    return indexes
   }
 
   func roundEventLabelCorners() {

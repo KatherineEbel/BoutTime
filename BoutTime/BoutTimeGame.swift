@@ -14,6 +14,7 @@ class BoutTimeGame {
   var events: [Event]
   var gameSounds: [GameSound: SystemSoundID] = [.CorrectDing: 0, .IncorrectBuzz: 0]
   var currentRound: BoutTimeRound = BoutTimeRound()
+  var currentRoundEventIndexes: [Int] = []
   var numberOfRounds = 5
   var roundCounter = 0
   var totalScore = 0
@@ -41,39 +42,36 @@ class BoutTimeGame {
   }
   func newRound() {
     currentRound.reset()
-    do {
-      currentRound.events = try getEventsForCurrentRound()
-    } catch let error {
-      fatalError("\(error)")
-    }
+    currentRound.events = getEventsForCurrentRound()
   }
   
-  func getEventsForCurrentRound() throws -> [Event] {
+  func getEventsForCurrentRound() -> [Event] {
+    currentRoundEventIndexes = []
     var eventsForRound: [Event] = []
-    for _ in 1...currentRound.eventsPerRound {
-      let event = getUniqueEvent(forEvents: eventsForRound)
-      eventsForRound.append(event)
-    }
-    guard eventsForRound.count == currentRound.eventsPerRound else {
-      throw BoutTimeError.StartRoundError
+    for _ in 0..<currentRound.eventsPerRound {
+      eventsForRound.append(events[getUniqueIndexForEvent()])
     }
     return eventsForRound
   }
   
-  func getUniqueEvent(forEvents roundEvents: [Event]) -> Event {
-    let indexOfEvent = GKRandomSource.sharedRandom().nextInt(upperBound: events.count)
-    var roundEvent: Event
+  func getUniqueIndexForEvent() -> Int {
+    var indexOfEvent: Int
     repeat {
-      roundEvent = self.events[indexOfEvent]
-    } while roundEvents.contains(roundEvent)
-    return roundEvent
+      indexOfEvent = GKRandomSource.sharedRandom().nextInt(upperBound: events.count)
+    } while currentRoundEventIndexes.contains(indexOfEvent)
+    currentRoundEventIndexes.append(indexOfEvent)
+    return indexOfEvent
   }
   
+  func swapEvents(oldEventIndex oldIndex: Int, newEventIndex newIndex: Int) {
+    swap(&currentRound.events[oldIndex], &currentRound.events[newIndex])
+  }
+ 
   func loadGameSounds() throws {
     for (name, _) in gameSounds {
       let soundURL: URL
       guard let pathToSoundFile = Bundle.main.path(forResource: name.rawValue, ofType: "wav") else {
-        throw BoutTimeError.LoudSoundError
+        throw BoutTimeError.LoadSoundError
       }
       soundURL = URL(fileURLWithPath: pathToSoundFile)
       AudioServicesCreateSystemSoundID(soundURL as CFURL, &gameSounds[name]!)
@@ -91,6 +89,7 @@ class BoutTimeGame {
       totalScore += 1
     }
     roundCounter += 1
+    currentRound.roundOver()
     isGameOver ? endGame() : newRound()
   }
   
