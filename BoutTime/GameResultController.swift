@@ -32,7 +32,8 @@ class GameResultController: UIViewController {
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-      // FIXME: Implement or delete
+      let gameController = segue.destination as! GameController
+      gameController.readyForNextRound = true
     }
 
 }

@@ -35,6 +35,12 @@ enum GamePrompt: String {
   case tapToLearnMore = "Tap events to learn more"
 }
 
+enum SegueIdentifier: String {
+  case startGame
+  case getInfo
+  case endGame
+}
+
 struct Event: EventType {
   let name: String
   let date: NSDate
@@ -49,6 +55,7 @@ struct Event: EventType {
 
 class BoutTimeRound: NSObject, Timeable, Chronologicalizable {
   let eventsPerRound = 4
+  var isOver = false
   var timeLimit: TimeInterval = 60
   var timer: Timer = Timer()
   var events: [EventType] = []
@@ -90,11 +97,13 @@ class BoutTimeRound: NSObject, Timeable, Chronologicalizable {
   
   func roundOver() {
     stopTimer()
+    isOver = true
   }
   
   func reset() {
     events = []
     timerCounter = 60
+    isOver = false
   }
   
   deinit {

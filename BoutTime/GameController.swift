@@ -13,13 +13,12 @@ class GameController: UIViewController {
   @IBOutlet var eventLabels: [UILabel]!
   @IBOutlet var eventButtons: [UIButton]!
   @IBOutlet weak var promptLabel: UILabel!
-  
   @IBOutlet weak var timerLabel: UILabel!
-  
   @IBOutlet weak var nextRoundButton: UIButton!
 
   let boutTimeGame: BoutTimeGame = BoutTimeGame()
   var selectedEvent: EventType? = nil
+  var readyForNextRound = false
   override var canBecomeFirstResponder: Bool {
     return true
   }
@@ -27,13 +26,18 @@ class GameController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     boutTimeGame.start()
+    boutTimeGame.newRound()
+    setupUI()
     self.becomeFirstResponder()
     timerLabel.addObserver(self, forKeyPath: "text", options: [.new], context: nil)
   }
   
   override func viewWillAppear(_ animated: Bool) {
-    boutTimeGame.newRound()
-    setupUI()
+    if readyForNextRound {
+      boutTimeGame.newRound()
+      setupUI()
+      readyForNextRound = false
+    }
   }
   
   override func viewWillLayoutSubviews() {
@@ -48,47 +52,56 @@ class GameController: UIViewController {
   
   
   @IBAction func getEvent1Info(_ sender: UITapGestureRecognizer) {
-    getInfo(forEventIdex: 0)
+    getInfo(forEventIndex: 0)
   }
   @IBAction func getEvent2Info(_ sender: UITapGestureRecognizer) {
-    getInfo(forEventIdex: 1)
+    getInfo(forEventIndex: 1)
   }
   @IBAction func getEvent3Info(_ sender: UITapGestureRecognizer) {
-    getInfo(forEventIdex: 2)
+    getInfo(forEventIndex: 2)
   }
   @IBAction func getEvent4Info(_ sender: UITapGestureRecognizer) {
-    getInfo(forEventIdex: 3)
+    getInfo(forEventIndex: 3)
   }
   
   @IBAction func nextRound(_ sender: UIButton) {
+    readyForNextRound = true
+    let isChronological = boutTimeGame.currentRound.isChronological
+    boutTimeGame.endRound(success: isChronological)
     if boutTimeGame.isGameOver {
-      print("Game Over")
-      performSegue(withIdentifier: "endGame", sender: self)
+      performSegue(withIdentifier: SegueIdentifier.endGame.rawValue, sender: self)
     } else {
       setupUI()
+      readyForNextRound = false
     }
   }
   
-  @IBAction func swapEventsForAction(_ sender: UIButton) {
+  @IBAction func swapEventsForSelectedButton(_ sender: UIButton) {
     let eventButtonTag = EventButtonTag(rawValue: sender.tag)
     if let eventButtonTag = eventButtonTag {
-      do {
-        try sender.setImage(UIImage.imageForEventButton(withTag: eventButtonTag, isSelected: true), for: .normal)
-        for eventButton in eventButtons {
-          if eventButton.tag != eventButtonTag.rawValue {
-            let tag = EventButtonTag(rawValue: eventButton.tag)
-            let image = try UIImage.imageForEventButton(withTag: tag!, isSelected: false)
-            eventButton.setImage(image, for: .normal)
-          }
-        }
-      } catch let error {
-        fatalError("\(error)")
-      }
+      activate(sender, forTag: eventButtonTag)
       let (oldIndex, newIndex) = indexesForEvent(withButtonTag: eventButtonTag)
       boutTimeGame.swapEvents(oldEventIndex: oldIndex, newEventIndex: newIndex)
       setUpEventLabels()
     }
     
+  }
+  
+  func activate(_ button: UIButton, forTag tag: EventButtonTag) {
+    do {
+      try button.setImage(UIImage.imageForEventButton(withTag: tag, isSelected: true), for: .normal)
+      for eventButton in eventButtons {
+        if eventButton.tag != tag.rawValue {
+          let unselectedTag = EventButtonTag(rawValue: eventButton.tag)
+          if let unselectedTag = unselectedTag {
+            let image = try UIImage.imageForEventButton(withTag: unselectedTag, isSelected: false)
+            eventButton.setImage(image, for: .normal)
+          }
+        }
+      }
+    } catch let error {
+      fatalError("\(error)")
+    }
   }
   
   
@@ -104,8 +117,13 @@ class GameController: UIViewController {
   }
   
   override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
-    if motion == .motionShake {
+    let isCurrentRoundOver = boutTimeGame.currentRound.isOver
+    if motion == .motionShake && !isCurrentRoundOver {
+      print(isCurrentRoundOver)
       resultForRound()
+      deselectEventButtons()
+      eventButtonsEnabled(false)
+      boutTimeGame.currentRound.roundOver()
     }
   }
   
@@ -119,7 +137,6 @@ class GameController: UIViewController {
   func resultForRound() {
     let isChronological = boutTimeGame.currentRound.isChronological
     boutTimeGame.play(sound: isChronological ? .CorrectDing : .IncorrectBuzz)
-    boutTimeGame.endRound(success: isChronological)
     setupUIForResult(success: isChronological)
   }
   
@@ -128,7 +145,9 @@ class GameController: UIViewController {
     nextRoundButton.isHidden = true
     promptLabel.text = GamePrompt.shakeToComplete.rawValue
     setUpEventLabels()
+    eventButtonsEnabled(true)
     setTimerLabel()
+    touchOnEventLabels(isEnabled: false)
   }
   
   func setTimerLabel() {
@@ -138,7 +157,7 @@ class GameController: UIViewController {
   
   func setupUIForResult(success: Bool) {
     let image: UIImage
-    deselectEventButtons()
+    touchOnEventLabels(isEnabled: true)
     timerLabel.isHidden = true
     promptLabel.text = GamePrompt.tapToLearnMore.rawValue
     do {
@@ -164,12 +183,20 @@ class GameController: UIViewController {
     return indexes
   }
   
+  func eventButtonsEnabled(_ enabled: Bool) {
+    let isEnabled = enabled
+    for eventButton in eventButtons {
+      eventButton.isUserInteractionEnabled = isEnabled
+    }
+  }
+  
   func deselectEventButtons() {
     for eventButton in eventButtons {
       let tag = EventButtonTag(rawValue: eventButton.tag)
       do {
         let image = try UIImage.imageForEventButton(withTag: tag!, isSelected: false)
         eventButton.setImage(image, for: .normal)
+        eventButton.isUserInteractionEnabled = false
       } catch let error {
         fatalError("\(error)")
       }
@@ -182,20 +209,28 @@ class GameController: UIViewController {
     }
   }
   
-  func getInfo(forEventIdex index: Int) {
+  // stop round timer and load info for the selected event
+  func getInfo(forEventIndex index: Int) {
     selectedEvent = boutTimeGame.currentRound.events[index]
-    performSegue(withIdentifier: "getInfo", sender: self)
+    performSegue(withIdentifier: SegueIdentifier.getInfo.rawValue, sender: self)
+  }
+  
+  // touch should only be enabled on labels after round is over
+  func touchOnEventLabels(isEnabled enabled: Bool) {
+    for eventlabel in eventLabels {
+      eventlabel.isUserInteractionEnabled = enabled ? true : false
+    }
   }
   
   // Navigation
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if segue.identifier == "getInfo" {
+    if segue.identifier == SegueIdentifier.getInfo.rawValue {
       let infoController = segue.destination as! InfoController
       if let selectedEvent = selectedEvent {
         print(selectedEvent.urlString)
         infoController.infoUrlString = selectedEvent.urlString
       }
-    } else if segue.identifier == "endGame" {
+    } else if segue.identifier == SegueIdentifier.endGame.rawValue {
       let gameResultController = segue.destination as! GameResultController
       gameResultController.result = boutTimeGame.gameResult()
       boutTimeGame.endGame()

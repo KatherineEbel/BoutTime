@@ -27,7 +27,7 @@ class InstructionsController: UIViewController {
   
   override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
     if motion == .motionShake {
-      performSegue(withIdentifier: "startGame", sender: self)
+      performSegue(withIdentifier: SegueIdentifier.startGame.rawValue, sender: self)
     }
   }
   

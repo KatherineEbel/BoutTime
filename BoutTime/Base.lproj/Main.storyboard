@@ -68,11 +68,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="jeX-Qa-fPO" userLabel="Main StackView">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="jeX-Qa-fPO" userLabel="Main StackView">
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rJF-Jc-aHB" userLabel="Event 1 StackView">
                                         <subviews>
-                                            <label opaque="NO" contentMode="left" verticalHuggingPriority="240" text="Event 1 name label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FJk-kB-iNs">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="240" text="Event 1 name label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FJk-kB-iNs">
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <gestureRecognizers/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -88,14 +88,14 @@
                                                 </constraints>
                                                 <state key="normal" image="down_full"/>
                                                 <connections>
-                                                    <action selector="swapEventsForAction:" destination="A7x-OG-TMV" eventType="touchUpInside" id="2JH-3x-Ngl"/>
+                                                    <action selector="swapEventsForSelectedButton:" destination="A7x-OG-TMV" eventType="touchUpInside" id="4FA-0Z-Dpc"/>
                                                 </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sEZ-OC-jfn" userLabel="Event 2 StackView">
                                         <subviews>
-                                            <label opaque="NO" contentMode="left" verticalHuggingPriority="240" text="Event 2 name label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6pE-az-8dm">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="240" text="Event 2 name label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6pE-az-8dm">
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <gestureRecognizers/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -115,7 +115,7 @@
                                                         <state key="selected" image="up_half_selected"/>
                                                         <state key="focused" image="up_half_selected"/>
                                                         <connections>
-                                                            <action selector="swapEventsForAction:" destination="A7x-OG-TMV" eventType="touchUpInside" id="mLI-x4-omA"/>
+                                                            <action selector="swapEventsForSelectedButton:" destination="A7x-OG-TMV" eventType="touchUpInside" id="lMO-P5-Qvk"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="103" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mzD-MG-ZwM">
@@ -125,7 +125,7 @@
                                                         <state key="normal" image="down_half"/>
                                                         <state key="focused" image="down_half_selected"/>
                                                         <connections>
-                                                            <action selector="swapEventsForAction:" destination="A7x-OG-TMV" eventType="touchUpInside" id="tjJ-zN-4C4"/>
+                                                            <action selector="swapEventsForSelectedButton:" destination="A7x-OG-TMV" eventType="touchUpInside" id="BiF-vk-iDJ"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -137,7 +137,7 @@
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8ad-IY-U1q" userLabel="Event 3 StackView">
                                         <subviews>
-                                            <label opaque="NO" contentMode="left" verticalHuggingPriority="240" text="Event 3 name label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YKC-jJ-O4g" userLabel="Event3 Label">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="240" text="Event 3 name label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YKC-jJ-O4g" userLabel="Event3 Label">
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <gestureRecognizers/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -156,7 +156,7 @@
                                                         <state key="normal" image="up_half"/>
                                                         <state key="focused" image="up_half_selected"/>
                                                         <connections>
-                                                            <action selector="swapEventsForAction:" destination="A7x-OG-TMV" eventType="touchUpInside" id="osP-eo-29z"/>
+                                                            <action selector="swapEventsForSelectedButton:" destination="A7x-OG-TMV" eventType="touchUpInside" id="j77-EJ-Sd0"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="105" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YMM-F0-IMh">
@@ -166,7 +166,7 @@
                                                         <state key="normal" image="down_half"/>
                                                         <state key="focused" image="down_half_selected"/>
                                                         <connections>
-                                                            <action selector="swapEventsForAction:" destination="A7x-OG-TMV" eventType="touchUpInside" id="RaP-Qj-nY4"/>
+                                                            <action selector="swapEventsForSelectedButton:" destination="A7x-OG-TMV" eventType="touchUpInside" id="L2r-WB-Ves"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -178,7 +178,7 @@
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fW4-d3-40S" userLabel="Event 4 StackView">
                                         <subviews>
-                                            <label opaque="NO" contentMode="left" verticalHuggingPriority="240" text="Event 4 name label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d6H-Z6-CGz">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="240" text="Event 4 name label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d6H-Z6-CGz">
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <gestureRecognizers/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -195,7 +195,7 @@
                                                 <state key="normal" image="up_full"/>
                                                 <state key="focused" image="up_full_selected"/>
                                                 <connections>
-                                                    <action selector="swapEventsForAction:" destination="A7x-OG-TMV" eventType="touchUpInside" id="Df2-b3-H6x"/>
+                                                    <action selector="swapEventsForSelectedButton:" destination="A7x-OG-TMV" eventType="touchUpInside" id="4lY-Zj-gOt"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -203,13 +203,13 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="rzF-cr-t9v" userLabel="Game Display StackView">
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="0:60" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Elw-Ry-Hyb">
-                                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button hidden="YES" opaque="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bG6-bg-PdZ" userLabel="Continue Button">
+                                            <button hidden="YES" opaque="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bG6-bg-PdZ" userLabel="Continue Button">
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="124" id="FVx-FX-hdB"/>
+                                                    <constraint firstAttribute="width" constant="160" id="FVx-FX-hdB"/>
                                                 </constraints>
                                                 <state key="normal" image="play_again"/>
                                                 <connections>
@@ -228,9 +228,9 @@
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.1647058824" blue="0.2901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="jeX-Qa-fPO" firstAttribute="top" secondItem="huP-U1-MK4" secondAttribute="bottom" constant="20" id="LRb-og-Gcg"/>
-                            <constraint firstItem="dzf-d7-dho" firstAttribute="top" secondItem="jeX-Qa-fPO" secondAttribute="bottom" id="rsA-jA-Jze"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="jeX-Qa-fPO" secondAttribute="trailing" id="vWe-Jf-QKs"/>
+                            <constraint firstAttribute="bottom" secondItem="jeX-Qa-fPO" secondAttribute="bottom" id="NcS-Ic-nC5"/>
+                            <constraint firstItem="jeX-Qa-fPO" firstAttribute="top" secondItem="Xau-vY-IfM" secondAttribute="top" constant="20" id="XRc-DL-qDJ"/>
+                            <constraint firstItem="jeX-Qa-fPO" firstAttribute="trailing" secondItem="Xau-vY-IfM" secondAttribute="trailingMargin" id="f5d-bq-rVm"/>
                             <constraint firstItem="jeX-Qa-fPO" firstAttribute="leading" secondItem="Xau-vY-IfM" secondAttribute="leadingMargin" id="yTP-xL-WdF"/>
                         </constraints>
                     </view>
@@ -249,7 +249,7 @@
                         <outletCollection property="eventButtons" destination="YMM-F0-IMh" collectionClass="NSMutableArray" id="cAy-Zh-hbV"/>
                         <outletCollection property="eventButtons" destination="YHb-0R-wnM" collectionClass="NSMutableArray" id="BzU-3n-bqN"/>
                         <segue destination="Li3-4R-Zmg" kind="presentation" identifier="endGame" modalTransitionStyle="flipHorizontal" id="ieL-gD-hjs"/>
-                        <segue destination="Mw8-tK-5E4" kind="presentation" identifier="getInfo" modalTransitionStyle="crossDissolve" id="Zqx-X3-Wyf"/>
+                        <segue destination="Mw8-tK-5E4" kind="show" identifier="getInfo" id="Zqx-X3-Wyf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tE1-oh-JNR" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -288,34 +288,58 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rav-H0-LU1">
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </webView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CFF-OA-m98">
+                            <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CFF-OA-m98">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="54" id="pG6-IL-Ypa"/>
+                                    <constraint firstAttribute="height" constant="40" id="pG6-IL-Ypa"/>
                                 </constraints>
                                 <state key="normal" title="Button" image="webview_bar"/>
+                                <connections>
+                                    <action selector="close" destination="Mw8-tK-5E4" eventType="touchUpInside" id="dO3-aA-EE3"/>
+                                </connections>
                             </button>
+                            <webView contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rav-H0-LU1">
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Mw8-tK-5E4" id="KzZ-KW-Q5E"/>
+                                </connections>
+                            </webView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KGv-of-rAs">
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="XQU-II-1ec">
+                                        <color key="color" red="0.0" green="0.1647058824" blue="0.2901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.57647058823529407" blue="0.066666666666666666" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="7OW-Xi-Kab"/>
+                                    <constraint firstItem="XQU-II-1ec" firstAttribute="centerY" secondItem="KGv-of-rAs" secondAttribute="centerY" id="eMT-ly-drN"/>
+                                    <constraint firstAttribute="height" constant="80" id="trs-uA-KVT"/>
+                                    <constraint firstItem="XQU-II-1ec" firstAttribute="centerX" secondItem="KGv-of-rAs" secondAttribute="centerX" id="wNw-NF-yKv"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Rav-H0-LU1" firstAttribute="top" secondItem="CFF-OA-m98" secondAttribute="bottom" id="ExI-EF-NGA"/>
                             <constraint firstItem="CFF-OA-m98" firstAttribute="leading" secondItem="yiN-k0-cqJ" secondAttribute="leading" id="IZ1-lX-aJD"/>
                             <constraint firstItem="CFF-OA-m98" firstAttribute="top" secondItem="yiN-k0-cqJ" secondAttribute="top" id="O2P-AA-Mgf"/>
+                            <constraint firstItem="KGv-of-rAs" firstAttribute="centerY" secondItem="yiN-k0-cqJ" secondAttribute="centerY" id="XGz-WZ-E3I"/>
                             <constraint firstAttribute="trailing" secondItem="CFF-OA-m98" secondAttribute="trailing" id="XkO-WT-5kQ"/>
-                            <constraint firstItem="Rav-H0-LU1" firstAttribute="top" secondItem="yiN-k0-cqJ" secondAttribute="top" id="Yhx-YD-0Dq"/>
                             <constraint firstItem="Daz-0h-MRO" firstAttribute="top" secondItem="Rav-H0-LU1" secondAttribute="bottom" id="e0r-m1-4hH"/>
                             <constraint firstAttribute="trailing" secondItem="Rav-H0-LU1" secondAttribute="trailing" id="gsk-8N-vCN"/>
                             <constraint firstItem="Rav-H0-LU1" firstAttribute="leading" secondItem="yiN-k0-cqJ" secondAttribute="leading" id="snj-76-kaL"/>
+                            <constraint firstItem="KGv-of-rAs" firstAttribute="centerX" secondItem="yiN-k0-cqJ" secondAttribute="centerX" id="usZ-Xc-XsE"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activitySpinner" destination="XQU-II-1ec" id="p5q-Gp-LPc"/>
+                        <outlet property="spinnerContainer" destination="KGv-of-rAs" id="r6l-j4-E0h"/>
                         <outlet property="webView" destination="Rav-H0-LU1" id="lbM-LP-Awf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5qZ-eF-2JF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="84" y="642"/>
+            <point key="canvasLocation" x="84" y="641.82908545727139"/>
         </scene>
         <!--Game Result Controller-->
         <scene sceneID="kos-nd-GmD">
@@ -345,7 +369,7 @@
                                             </label>
                                         </subviews>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="puF-WR-mTP">
+                                    <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="puF-WR-mTP">
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="BFj-Lm-AcE"/>
                                             <constraint firstAttribute="width" constant="180" id="Img-Tj-Mop"/>
