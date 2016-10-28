@@ -40,16 +40,10 @@ struct Event: EventType {
   let date: NSDate
   let urlString: String
   
-  func isBefore(otherEvent event: Event) -> Bool {
+  func isBefore(otherEvent event: EventType) -> Bool {
     let earlierDate = date.earlierDate(event.date as Date)
     // if earlier date is equal to self.date then self is earlier than event argument
     return date as Date == earlierDate ? true : false
-  }
-  static func == (lhs: Event, rhs: Event) -> Bool {
-    return
-      lhs.name == rhs.name &&
-        lhs.date == rhs.date &&
-        lhs.urlString == rhs.urlString
   }
 }
 
@@ -57,7 +51,7 @@ class BoutTimeRound: NSObject, Timeable, Chronologicalizable {
   let eventsPerRound = 4
   var timeLimit: TimeInterval = 60
   var timer: Timer = Timer()
-  var events: [Event] = []
+  var events: [EventType] = []
   weak var timerLabel: UILabel?
   var timerCounter: Int = 60 {
     didSet {
@@ -125,8 +119,8 @@ class PlistConverter {
 }
 
 class EventUnarchiver {
-  class func eventsFromDictionary(dictionary: [String: AnyObject]) throws -> [Event] {
-    var events: [Event] = []
+  class func eventsFromDictionary(dictionary: [String: AnyObject]) throws -> [EventType] {
+    var events: [EventType] = []
     for (_, value) in dictionary {
       if let eventDict = value as? [String: AnyObject],
         let name = eventDict["name"] as? String, let date = eventDict["date"] as? NSDate,

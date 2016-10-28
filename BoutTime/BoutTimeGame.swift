@@ -11,7 +11,7 @@ import AudioToolbox
 import GameKit
 
 class BoutTimeGame {
-  var events: [Event]
+  var events: [EventType]
   var gameSounds: [GameSound: SystemSoundID] = [.CorrectDing: 0, .IncorrectBuzz: 0]
   var currentRound: BoutTimeRound = BoutTimeRound()
   var currentRoundEventIndexes: [Int] = []
@@ -39,14 +39,15 @@ class BoutTimeGame {
       fatalError("\(error)")
     }
   }
+  
   func newRound() {
     currentRound.reset()
     currentRound.events = getEventsForCurrentRound()
   }
   
-  func getEventsForCurrentRound() -> [Event] {
+  func getEventsForCurrentRound() -> [EventType] {
     currentRoundEventIndexes = []
-    var eventsForRound: [Event] = []
+    var eventsForRound: [EventType] = []
     for _ in 0..<currentRound.eventsPerRound {
       eventsForRound.append(events[getUniqueIndexForEvent()])
     }

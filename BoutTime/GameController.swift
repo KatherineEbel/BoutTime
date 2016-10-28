@@ -19,7 +19,7 @@ class GameController: UIViewController {
   @IBOutlet weak var nextRoundButton: UIButton!
 
   let boutTimeGame: BoutTimeGame = BoutTimeGame()
-  
+  var selectedEvent: EventType? = nil
   override var canBecomeFirstResponder: Bool {
     return true
   }
@@ -44,6 +44,20 @@ class GameController: UIViewController {
     super.didReceiveMemoryWarning()
     // Dispose of any resources that can be recreated.
     print("Memory Warning")
+  }
+  
+  
+  @IBAction func getEvent1Info(_ sender: UITapGestureRecognizer) {
+    getInfo(forEventIdex: 0)
+  }
+  @IBAction func getEvent2Info(_ sender: UITapGestureRecognizer) {
+    getInfo(forEventIdex: 1)
+  }
+  @IBAction func getEvent3Info(_ sender: UITapGestureRecognizer) {
+    getInfo(forEventIdex: 2)
+  }
+  @IBAction func getEvent4Info(_ sender: UITapGestureRecognizer) {
+    getInfo(forEventIdex: 3)
   }
   
   @IBAction func nextRound(_ sender: UIButton) {
@@ -77,17 +91,6 @@ class GameController: UIViewController {
     
   }
   
-  func deselectEventButtons() {
-    for eventButton in eventButtons {
-      let tag = EventButtonTag(rawValue: eventButton.tag)
-      do {
-        let image = try UIImage.imageForEventButton(withTag: tag!, isSelected: false)
-        eventButton.setImage(image, for: .normal)
-      } catch let error {
-        fatalError("\(error)")
-      }
-    }
-  }
   
   override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
     if keyPath == "text" {
@@ -160,6 +163,18 @@ class GameController: UIViewController {
     }
     return indexes
   }
+  
+  func deselectEventButtons() {
+    for eventButton in eventButtons {
+      let tag = EventButtonTag(rawValue: eventButton.tag)
+      do {
+        let image = try UIImage.imageForEventButton(withTag: tag!, isSelected: false)
+        eventButton.setImage(image, for: .normal)
+      } catch let error {
+        fatalError("\(error)")
+      }
+    }
+  }
 
   func roundEventLabelCorners() {
     for eventLabel in eventLabels {
@@ -167,15 +182,24 @@ class GameController: UIViewController {
     }
   }
   
-  // Navigation
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    let controller = segue.destination as! GameResultController
-    controller.result = boutTimeGame.gameResult()
-    boutTimeGame.endGame()
+  func getInfo(forEventIdex index: Int) {
+    selectedEvent = boutTimeGame.currentRound.events[index]
+    performSegue(withIdentifier: "getInfo", sender: self)
   }
   
-  deinit {
-    print("Game Controller Deinit")
+  // Navigation
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segue.identifier == "getInfo" {
+      let infoController = segue.destination as! InfoController
+      if let selectedEvent = selectedEvent {
+        print(selectedEvent.urlString)
+        infoController.infoUrlString = selectedEvent.urlString
+      }
+    } else if segue.identifier == "endGame" {
+      let gameResultController = segue.destination as! GameResultController
+      gameResultController.result = boutTimeGame.gameResult()
+      boutTimeGame.endGame()
+    }
   }
 }
 

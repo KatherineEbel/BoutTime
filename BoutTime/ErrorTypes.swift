@@ -13,5 +13,5 @@ enum ResourceError: Error {
 
 enum BoutTimeError: Error {
   case LoadSoundError
-  case StartRoundError
+  case InfoUrlError
 }

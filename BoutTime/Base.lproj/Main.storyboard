@@ -72,11 +72,15 @@
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rJF-Jc-aHB" userLabel="Event 1 StackView">
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="240" text="Event 1 name label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FJk-kB-iNs">
+                                            <label opaque="NO" contentMode="left" verticalHuggingPriority="240" text="Event 1 name label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FJk-kB-iNs">
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <gestureRecognizers/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="0.090196078430000007" green="0.37647058820000001" blue="0.49019607840000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="Mom-cU-zOh" appends="YES" id="G9E-Oa-7EN"/>
+                                                </connections>
                                             </label>
                                             <button opaque="NO" tag="101" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" highlighted="YES" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JDm-cP-rZr">
                                                 <constraints>
@@ -91,11 +95,15 @@
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sEZ-OC-jfn" userLabel="Event 2 StackView">
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="240" text="Event 2 name label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6pE-az-8dm">
+                                            <label opaque="NO" contentMode="left" verticalHuggingPriority="240" text="Event 2 name label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6pE-az-8dm">
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <gestureRecognizers/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="0.090196078430000007" green="0.37647058820000001" blue="0.49019607840000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="EyH-rM-qiw" appends="YES" id="i5y-7S-fJ5"/>
+                                                </connections>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="S6K-uu-Kj7">
                                                 <subviews>
@@ -129,11 +137,15 @@
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8ad-IY-U1q" userLabel="Event 3 StackView">
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="240" text="Event 3 name label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YKC-jJ-O4g" userLabel="Event3 Label">
+                                            <label opaque="NO" contentMode="left" verticalHuggingPriority="240" text="Event 3 name label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YKC-jJ-O4g" userLabel="Event3 Label">
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <gestureRecognizers/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="0.090196078430000007" green="0.37647058820000001" blue="0.49019607840000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="fhp-ya-fIZ" appends="YES" id="GkD-7S-hio"/>
+                                                </connections>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="qSC-h7-fvO">
                                                 <subviews>
@@ -166,11 +178,15 @@
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fW4-d3-40S" userLabel="Event 4 StackView">
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="240" text="Event 4 name label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d6H-Z6-CGz">
+                                            <label opaque="NO" contentMode="left" verticalHuggingPriority="240" text="Event 4 name label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d6H-Z6-CGz">
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <gestureRecognizers/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="0.090196078430000007" green="0.37647058820000001" blue="0.49019607840000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="LhK-xE-Msk" appends="YES" id="M2H-lV-kff"/>
+                                                </connections>
                                             </label>
                                             <button opaque="NO" tag="106" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YHb-0R-wnM">
                                                 <constraints>
@@ -233,11 +249,73 @@
                         <outletCollection property="eventButtons" destination="YMM-F0-IMh" collectionClass="NSMutableArray" id="cAy-Zh-hbV"/>
                         <outletCollection property="eventButtons" destination="YHb-0R-wnM" collectionClass="NSMutableArray" id="BzU-3n-bqN"/>
                         <segue destination="Li3-4R-Zmg" kind="presentation" identifier="endGame" modalTransitionStyle="flipHorizontal" id="ieL-gD-hjs"/>
+                        <segue destination="Mw8-tK-5E4" kind="presentation" identifier="getInfo" modalTransitionStyle="crossDissolve" id="Zqx-X3-Wyf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tE1-oh-JNR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Mom-cU-zOh">
+                    <connections>
+                        <action selector="getEvent1Info:" destination="A7x-OG-TMV" id="A7H-xI-zqo"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="EyH-rM-qiw">
+                    <connections>
+                        <action selector="getEvent2Info:" destination="A7x-OG-TMV" id="7fe-XL-OCj"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="fhp-ya-fIZ">
+                    <connections>
+                        <action selector="getEvent3Info:" destination="A7x-OG-TMV" id="FdF-HO-AnT"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="LhK-xE-Msk">
+                    <connections>
+                        <action selector="getEvent4Info:" destination="A7x-OG-TMV" id="0Ri-sn-Tx2"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="84" y="-102"/>
+        </scene>
+        <!--Info Controller-->
+        <scene sceneID="B70-rx-Mp2">
+            <objects>
+                <viewController id="Mw8-tK-5E4" customClass="InfoController" customModule="BoutTime" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="SSR-Kp-p5j"/>
+                        <viewControllerLayoutGuide type="bottom" id="Daz-0h-MRO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="yiN-k0-cqJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rav-H0-LU1">
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </webView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CFF-OA-m98">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="54" id="pG6-IL-Ypa"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="webview_bar"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="CFF-OA-m98" firstAttribute="leading" secondItem="yiN-k0-cqJ" secondAttribute="leading" id="IZ1-lX-aJD"/>
+                            <constraint firstItem="CFF-OA-m98" firstAttribute="top" secondItem="yiN-k0-cqJ" secondAttribute="top" id="O2P-AA-Mgf"/>
+                            <constraint firstAttribute="trailing" secondItem="CFF-OA-m98" secondAttribute="trailing" id="XkO-WT-5kQ"/>
+                            <constraint firstItem="Rav-H0-LU1" firstAttribute="top" secondItem="yiN-k0-cqJ" secondAttribute="top" id="Yhx-YD-0Dq"/>
+                            <constraint firstItem="Daz-0h-MRO" firstAttribute="top" secondItem="Rav-H0-LU1" secondAttribute="bottom" id="e0r-m1-4hH"/>
+                            <constraint firstAttribute="trailing" secondItem="Rav-H0-LU1" secondAttribute="trailing" id="gsk-8N-vCN"/>
+                            <constraint firstItem="Rav-H0-LU1" firstAttribute="leading" secondItem="yiN-k0-cqJ" secondAttribute="leading" id="snj-76-kaL"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="Rav-H0-LU1" id="lbM-LP-Awf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5qZ-eF-2JF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="84" y="642"/>
         </scene>
         <!--Game Result Controller-->
         <scene sceneID="kos-nd-GmD">
@@ -292,7 +370,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p0x-dH-6q8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="834" y="-102"/>
+            <point key="canvasLocation" x="1023" y="-102"/>
         </scene>
     </scenes>
     <resources>
@@ -304,5 +382,6 @@
         <image name="up_full_selected" width="158" height="457"/>
         <image name="up_half" width="158" height="229"/>
         <image name="up_half_selected" width="158" height="229"/>
+        <image name="webview_bar" width="1333" height="167"/>
     </resources>
 </document>
