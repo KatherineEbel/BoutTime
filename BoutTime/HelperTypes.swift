@@ -28,6 +28,19 @@ enum EventButtonTag: Int {
   case event3Up = 104
   case event3Down = 105
   case event4Up = 106
+  
+  var indexesForTag: (oldIndex: Int, newIndex: Int) {
+    let indexes: (Int, Int)
+    switch self {
+    case .event1Down: indexes = (0, 1)
+    case .event2Up: indexes = (1, 0)
+    case .event2Down: indexes = (1, 2)
+    case .event3Up: indexes = (2, 1)
+    case .event3Down: indexes = (2, 3)
+    case .event4Up: indexes = (3, 2)
+    }
+    return indexes
+  }
 }
 
 enum GamePrompt: String {

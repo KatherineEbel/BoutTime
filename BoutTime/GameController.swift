@@ -80,7 +80,7 @@ class GameController: UIViewController {
     let eventButtonTag = EventButtonTag(rawValue: sender.tag)
     if let eventButtonTag = eventButtonTag {
       activate(sender, forTag: eventButtonTag)
-      let (oldIndex, newIndex) = indexesForEvent(withButtonTag: eventButtonTag)
+      let (oldIndex, newIndex) = eventButtonTag.indexesForTag
       boutTimeGame.swapEvents(oldEventIndex: oldIndex, newEventIndex: newIndex)
       setUpEventLabels()
     }
@@ -168,19 +168,6 @@ class GameController: UIViewController {
     }
     nextRoundButton.setImage(image, for: .normal)
     nextRoundButton.isHidden = false
-  }
-  
-  func indexesForEvent(withButtonTag tag: EventButtonTag) -> (oldIndex: Int, newIndex: Int) {
-    let indexes: (Int, Int)
-    switch tag {
-      case .event1Down: indexes = (0, 1)
-      case .event2Up: indexes = (1, 0)
-      case .event2Down: indexes = (1, 2)
-      case .event3Up: indexes = (2, 1)
-      case .event3Down: indexes = (2, 3)
-      case .event4Up: indexes = (3, 2)
-    }
-    return indexes
   }
   
   func eventButtonsEnabled(_ enabled: Bool) {
