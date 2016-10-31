@@ -144,7 +144,7 @@ class GameController: UIViewController {
     timerLabel.isHidden = true
     promptLabel.text = GamePrompt.tapToLearnMore.rawValue
     do {
-      image = try UIImage.image(forEvent: .nextRound(success: success))
+      image = try UIImage.image(forEvent: success ? .correctAnswer : .incorrectAnswer)
     } catch let error {
       fatalError("\(error)")
     }

@@ -80,7 +80,7 @@
 		274C550C1DBBE2E400F7D0D2 /* BoutTime */ = {
 			isa = PBXGroup;
 			children = (
-				27A443171DBFCF730066207F /* Model */,
+				27A443171DBFCF730066207F /* Types */,
 				446A64AF1DC0D1E500D569CD /* ViewExtensions */,
 				27A443201DC0EB4F0066207F /* Controllers */,
 				27A4431C1DBFF7DF0066207F /* Resources */,
@@ -90,7 +90,7 @@
 			path = BoutTime;
 			sourceTree = "<group>";
 		};
-		27A443171DBFCF730066207F /* Model */ = {
+		27A443171DBFCF730066207F /* Types */ = {
 			isa = PBXGroup;
 			children = (
 				27A443131DBFC5A30066207F /* HelperTypes.swift */,
@@ -98,7 +98,7 @@
 				446A64AB1DC025F700D569CD /* Protocols.swift */,
 				446A64AD1DC0265800D569CD /* BoutTimeGame.swift */,
 			);
-			name = Model;
+			name = Types;
 			sourceTree = "<group>";
 		};
 		27A4431C1DBFF7DF0066207F /* Resources */ = {

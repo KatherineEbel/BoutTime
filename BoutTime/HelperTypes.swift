@@ -19,7 +19,6 @@ enum GameSound: String {
 enum GameEvent {
   case incorrectAnswer
   case correctAnswer
-  case nextRound(success: Bool)
 }
 
 enum EventButtonTag: Int {

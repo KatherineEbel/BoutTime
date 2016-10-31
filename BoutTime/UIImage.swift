@@ -12,9 +12,8 @@ extension UIImage {
   class func image(forEvent event: GameEvent) throws -> UIImage {
     let name: String
     switch event {
-    case .nextRound(success: let success):
-      name = success ? "next_round_success" : "next_round_fail"
-    default: name = "play_again"
+    case .incorrectAnswer: name = "next_round_fail"
+    case .correctAnswer: name = "next_round_success"
     }
     guard let image = UIImage(named: name) else {
       print("Couldn't get image")
