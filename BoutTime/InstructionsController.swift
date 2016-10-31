@@ -6,6 +6,8 @@
 //  Copyright © 2016 Katherine Ebel. All rights reserved.
 //
 
+// UI setup completely in storyboard since this controller simply for displaying instructions
+
 import UIKit
 
 class InstructionsController: UIViewController {
@@ -25,6 +27,7 @@ class InstructionsController: UIViewController {
       // Dispose of any resources that can be recreated.
   }
   
+  // start game with shake
   override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
     if motion == .motionShake {
       performSegue(withIdentifier: SegueIdentifier.startGame.rawValue, sender: self)

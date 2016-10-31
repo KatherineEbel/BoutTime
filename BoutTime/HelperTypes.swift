@@ -13,6 +13,7 @@ import GameKit
 enum GameSound: String {
   case IncorrectBuzz
   case CorrectDing
+  case ButtonPress
 }
 
 enum GameEvent {
@@ -29,7 +30,7 @@ enum EventButtonTag: Int {
   case event3Down = 105
   case event4Up = 106
   
-  var indexesForTag: (oldIndex: Int, newIndex: Int) {
+  var indexesForTag: (currentIndex: Int, newIndex: Int) {
     let indexes: (Int, Int)
     switch self {
     case .event1Down: indexes = (0, 1)

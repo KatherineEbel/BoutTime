@@ -24,7 +24,7 @@ class InfoController: UIViewController, UIWebViewDelegate {
     do {
       try loadInfoView(forUrlString: infoUrlString)
     } catch let error {
-      fatalError("\(error.localizedDescription)")
+      fatalError("\(error)")
     }
   }
   
@@ -36,16 +36,19 @@ class InfoController: UIViewController, UIWebViewDelegate {
       // Dispose of any resources that can be recreated.
   }
   
+  // starts starts animating activity spinner
   func webViewDidStartLoad(_ webView: UIWebView) {
     spinnerContainer.isHidden = false
     activitySpinner.startAnimating()
   }
   
+  // stops/hides activity spinner
   func webViewDidFinishLoad(_ webView: UIWebView) {
     spinnerContainer.isHidden = true
     activitySpinner.stopAnimating()
   }
   
+  // throws error if url can't be loaded
   func loadInfoView(forUrlString string: String?) throws {
     guard let infoUrlString = infoUrlString,
       let requestUrl = URL(string: infoUrlString) else {
@@ -60,14 +63,4 @@ class InfoController: UIViewController, UIWebViewDelegate {
     webView.delegate = nil
     dismiss(animated: true, completion: nil)
   }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

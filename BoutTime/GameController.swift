@@ -26,7 +26,6 @@ class GameController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     boutTimeGame.start()
-    boutTimeGame.newRound()
     setupUI()
     self.becomeFirstResponder()
     timerLabel.addObserver(self, forKeyPath: "text", options: [.new], context: nil)
@@ -50,11 +49,12 @@ class GameController: UIViewController {
   }
   
   // eventLabels are in sync with currentRound events, so get view associated
-  // with tapGesture, find the tag and get call get info for index associated with tag
+  // with tapGesture, find the tag and set the selectedEvent
   @IBAction func getEventInfo(_ sender: UITapGestureRecognizer) {
     if let view = sender.view as? UILabel,
       let index = eventLabels.index(of: view) {
-      getInfo(forEventIndex: index)
+      selectedEvent = boutTimeGame.currentRound.events[index]
+      performSegue(withIdentifier: SegueIdentifier.getInfo.rawValue, sender: self)
     }
   }
   
@@ -73,13 +73,12 @@ class GameController: UIViewController {
   
   
   @IBAction func swapEventsForSelectedButton(_ sender: UIButton) {
+    boutTimeGame.play(sound: .ButtonPress)
     if let eventButtonTag = EventButtonTag(rawValue: sender.tag) {
-      setActiveImage(forButton: sender)
-      let (oldIndex, newIndex) = eventButtonTag.indexesForTag
-      boutTimeGame.swapEvents(forIndex: newIndex, andIndex: oldIndex)
+      let (currentIndex, newIndex) = eventButtonTag.indexesForTag
+      boutTimeGame.swapEvents(forIndex: currentIndex, andIndex: newIndex)
       setUpEventLabels()
     }
-    
   }
   
   // observe value for timerLabel so view controller will know when timer is up
@@ -99,8 +98,6 @@ class GameController: UIViewController {
     let isCurrentRoundOver = boutTimeGame.currentRound.isOver
     if motion == .motionShake && !isCurrentRoundOver {
       resultForRound()
-      deselectEventButtons()
-      eventButtonsEnabled(false)
       boutTimeGame.currentRound.end()
     }
   }
@@ -121,6 +118,7 @@ class GameController: UIViewController {
     setupUIForResult(success: isChronological)
   }
   
+  // display appropriate UI objects for start of round, disable touch on eventLabels
   func setupUI() {
     timerLabel.isHidden = false
     nextRoundButton.isHidden = true
@@ -142,6 +140,7 @@ class GameController: UIViewController {
   func setupUIForResult(success: Bool) {
     let image: UIImage
     touchOnEventLabels(isEnabled: true)
+    eventButtonsEnabled(false)
     timerLabel.isHidden = true
     promptLabel.text = GamePrompt.tapToLearnMore.rawValue
     do {
@@ -154,50 +153,8 @@ class GameController: UIViewController {
   }
   
   // reenable event buttons at start of new rounds
-  func eventButtonsEnabled(_ enabled: Bool) {
-    let isEnabled = enabled
-    for eventButton in eventButtons {
-      eventButton.isUserInteractionEnabled = isEnabled
-    }
-  }
-  
-  // changes event button image back to unselected image
-  // buttons should also not be enabled for touch since round
-  // will be over when this is called.
-  func deselectEventButtons() {
-    for eventButton in eventButtons {
-      if let tag = EventButtonTag(rawValue: eventButton.tag) {
-        do {
-          // UIImage extension to set button image for selected or not selected
-          let unselectedImage = try UIImage.imageForEventButton(withTag: tag, isSelected: false)
-          eventButton.setImage(unselectedImage, for: .normal)
-          eventButton.isUserInteractionEnabled = false
-        } catch let error {
-          fatalError("\(error)")
-        }
-      }
-    }
-  }
-  
-  // sets an individual button to a selected image state, and sets all others with unselected image
-  func setActiveImage(forButton button: UIButton) {
-    if let tag = EventButtonTag(rawValue: button.tag) {
-      do {
-        try button.setImage(UIImage.imageForEventButton(withTag: tag, isSelected: true), for: .normal)
-        for eventButton in eventButtons {
-          if eventButton.tag != tag.rawValue {
-            let unselectedTag = EventButtonTag(rawValue: eventButton.tag)
-            if let unselectedTag = unselectedTag {
-              let image = try UIImage.imageForEventButton(withTag: unselectedTag, isSelected: false)
-              eventButton.setImage(image, for: .normal)
-            }
-          }
-        }
-      } catch let error {
-        fatalError("\(error)")
-      }
-    }
-
+  func eventButtonsEnabled(_ isEnabled: Bool) {
+    eventButtons.forEach { $0.isUserInteractionEnabled = isEnabled }
   }
 
   // UIView extension function to round only left corners of eventLabels
@@ -206,13 +163,7 @@ class GameController: UIViewController {
       eventLabel.round(corners: [.bottomLeft, .topLeft], withRadius: 5.0)
     }
   }
-  
-  // stop round timer and load info for the selected event
-  func getInfo(forEventIndex index: Int) {
-    selectedEvent = boutTimeGame.currentRound.events[index]
-    performSegue(withIdentifier: SegueIdentifier.getInfo.rawValue, sender: self)
-  }
-  
+
   // touch should only be enabled on labels after round is over
   func touchOnEventLabels(isEnabled enabled: Bool) {
     for eventlabel in eventLabels {
@@ -225,10 +176,12 @@ class GameController: UIViewController {
     if segue.identifier == SegueIdentifier.getInfo.rawValue {
       let infoController = segue.destination as! InfoController
       if let selectedEvent = selectedEvent {
+        // selectedEvent's urlString passed to the infoController
         infoController.infoUrlString = selectedEvent.urlString
       }
     } else if segue.identifier == SegueIdentifier.endGame.rawValue {
       let gameResultController = segue.destination as! GameResultController
+      // gameResult passed to the gameResultController
       gameResultController.result = boutTimeGame.gameResult()
       boutTimeGame.endGame()
     }

@@ -16,8 +16,8 @@ class GameResultController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        // result will be passed in from segue
         scoreLabel.text = result
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,6 +33,7 @@ class GameResultController: UIViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
       let gameController = segue.destination as! GameController
+      // ready for next round tells gameController ok to start timer for new round
       gameController.readyForNextRound = true
     }
 

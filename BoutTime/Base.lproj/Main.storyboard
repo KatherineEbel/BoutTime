@@ -32,7 +32,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8SO-7v-lgY">
-                                        <rect key="frame" x="171.5" y="215.5" width="0.0" height="216"/>
+                                        <rect key="frame" x="4.5" y="215.5" width="334.5" height="216"/>
                                         <string key="text">Events should be ordered chronologically from top to bottom in the order they occurred. You will be given 60 seconds to complete each round. Good Luck!</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -92,12 +92,14 @@
                                                     <outletCollection property="gestureRecognizers" destination="Mom-cU-zOh" appends="YES" id="G9E-Oa-7EN"/>
                                                 </connections>
                                             </label>
-                                            <button opaque="NO" tag="101" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" highlighted="YES" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JDm-cP-rZr">
+                                            <button opaque="NO" tag="101" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JDm-cP-rZr">
                                                 <rect key="frame" x="293" y="0.0" width="50" height="113.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="uGA-Rp-4Mw"/>
                                                 </constraints>
                                                 <state key="normal" image="down_full"/>
+                                                <state key="selected" image="down_full_selected"/>
+                                                <state key="highlighted" image="down_full_selected"/>
                                                 <connections>
                                                     <action selector="swapEventsForSelectedButton:" destination="A7x-OG-TMV" eventType="touchUpInside" id="4FA-0Z-Dpc"/>
                                                 </connections>
@@ -121,24 +123,27 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="S6K-uu-Kj7">
                                                 <rect key="frame" x="293" y="0.0" width="50" height="113.5"/>
                                                 <subviews>
-                                                    <button opaque="NO" tag="102" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DHN-O5-ozT">
+                                                    <button opaque="NO" tag="102" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DHN-O5-ozT">
                                                         <rect key="frame" x="0.0" y="0.0" width="50" height="56.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="50" id="ljc-hr-AKl"/>
                                                         </constraints>
                                                         <state key="normal" image="up_half"/>
                                                         <state key="selected" image="up_half_selected"/>
+                                                        <state key="highlighted" image="up_half_selected"/>
                                                         <state key="focused" image="up_half_selected"/>
                                                         <connections>
                                                             <action selector="swapEventsForSelectedButton:" destination="A7x-OG-TMV" eventType="touchUpInside" id="lMO-P5-Qvk"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" tag="103" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mzD-MG-ZwM">
+                                                    <button opaque="NO" tag="103" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mzD-MG-ZwM">
                                                         <rect key="frame" x="0.0" y="56.5" width="50" height="57"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="50" id="UMe-mu-5Px"/>
                                                         </constraints>
                                                         <state key="normal" image="down_half"/>
+                                                        <state key="selected" image="down_half_selected"/>
+                                                        <state key="highlighted" image="down_half_selected"/>
                                                         <state key="focused" image="down_half_selected"/>
                                                         <connections>
                                                             <action selector="swapEventsForSelectedButton:" destination="A7x-OG-TMV" eventType="touchUpInside" id="BiF-vk-iDJ"/>
@@ -168,23 +173,27 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="qSC-h7-fvO">
                                                 <rect key="frame" x="293" y="0.0" width="50" height="113"/>
                                                 <subviews>
-                                                    <button opaque="NO" tag="104" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o3H-Du-cnp">
+                                                    <button opaque="NO" tag="104" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o3H-Du-cnp">
                                                         <rect key="frame" x="0.0" y="0.0" width="50" height="56.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="50" id="ISa-WR-9Yo"/>
                                                         </constraints>
                                                         <state key="normal" image="up_half"/>
+                                                        <state key="selected" image="up_half_selected"/>
+                                                        <state key="highlighted" image="up_half_selected"/>
                                                         <state key="focused" image="up_half_selected"/>
                                                         <connections>
                                                             <action selector="swapEventsForSelectedButton:" destination="A7x-OG-TMV" eventType="touchUpInside" id="j77-EJ-Sd0"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" tag="105" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YMM-F0-IMh">
+                                                    <button opaque="NO" tag="105" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YMM-F0-IMh">
                                                         <rect key="frame" x="0.0" y="56.5" width="50" height="56.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="50" id="ot1-ZQ-30C"/>
                                                         </constraints>
                                                         <state key="normal" image="down_half"/>
+                                                        <state key="selected" image="down_half_selected"/>
+                                                        <state key="highlighted" image="down_half_selected"/>
                                                         <state key="focused" image="down_half_selected"/>
                                                         <connections>
                                                             <action selector="swapEventsForSelectedButton:" destination="A7x-OG-TMV" eventType="touchUpInside" id="L2r-WB-Ves"/>
@@ -211,12 +220,14 @@
                                                     <outletCollection property="gestureRecognizers" destination="LhK-xE-Msk" appends="YES" id="M2H-lV-kff"/>
                                                 </connections>
                                             </label>
-                                            <button opaque="NO" tag="106" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YHb-0R-wnM">
+                                            <button opaque="NO" tag="106" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YHb-0R-wnM">
                                                 <rect key="frame" x="293" y="0.0" width="50" height="113.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="Z5e-z2-gwM"/>
                                                 </constraints>
                                                 <state key="normal" image="up_full"/>
+                                                <state key="selected" image="up_half_selected"/>
+                                                <state key="highlighted" image="up_full_selected"/>
                                                 <state key="focused" image="up_full_selected"/>
                                                 <connections>
                                                     <action selector="swapEventsForSelectedButton:" destination="A7x-OG-TMV" eventType="touchUpInside" id="4lY-Zj-gOt"/>
@@ -233,7 +244,7 @@
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button hidden="YES" opaque="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bG6-bg-PdZ" userLabel="Continue Button">
+                                            <button hidden="YES" opaque="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bG6-bg-PdZ" userLabel="Continue Button">
                                                 <rect key="frame" x="91.5" y="38" width="160" height="37.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="160" id="FVx-FX-hdB"/>
@@ -317,9 +328,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CFF-OA-m98">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="pG6-IL-Ypa"/>
+                                    <constraint firstAttribute="height" constant="44" id="Heg-Ux-wKL"/>
                                 </constraints>
                                 <state key="normal" title="Button" image="webview_bar"/>
                                 <connections>
@@ -327,7 +338,7 @@
                                 </connections>
                             </button>
                             <webView contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rav-H0-LU1">
-                                <rect key="frame" x="0.0" y="40" width="375" height="627"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <outlet property="delegate" destination="Mw8-tK-5E4" id="KzZ-KW-Q5E"/>
@@ -436,6 +447,7 @@
     </scenes>
     <resources>
         <image name="down_full" width="158" height="457"/>
+        <image name="down_full_selected" width="158" height="457"/>
         <image name="down_half" width="158" height="229"/>
         <image name="down_half_selected" width="158" height="229"/>
         <image name="next_round_success" width="558" height="142"/>

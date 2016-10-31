@@ -22,19 +22,4 @@ extension UIImage {
     }
     return image
   }
-  
-  class func imageForEventButton(withTag tag: EventButtonTag, isSelected: Bool) throws -> UIImage {
-    var name: String
-    switch tag {
-      case .event1Down: name = "down_full"
-      case .event2Up, .event3Up: name = "up_half"
-      case .event2Down, .event3Down: name = "down_half"
-      case .event4Up:  name = "up_full"
-    }
-    name += isSelected ? "_selected" : ""
-    guard let image = UIImage(named: name) else {
-      throw ResourceError.InvalidResource
-    }
-    return image
-  }
 }

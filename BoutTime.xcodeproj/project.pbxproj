@@ -20,6 +20,7 @@
 		27A4432A1DC25FC40066207F /* GameResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A443291DC25FC40066207F /* GameResultController.swift */; };
 		27A4432C1DC29EAC0066207F /* InfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A4432B1DC29EAC0066207F /* InfoController.swift */; };
 		4439FCC71DC14BFC006A7814 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4439FCC61DC14BFC006A7814 /* UIImage.swift */; };
+		44632E481DC7A77E00681C8A /* ButtonPress.wav in Resources */ = {isa = PBXBuildFile; fileRef = 44632E471DC7A77E00681C8A /* ButtonPress.wav */; };
 		446A64AC1DC025F700D569CD /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446A64AB1DC025F700D569CD /* Protocols.swift */; };
 		446A64AE1DC0265800D569CD /* BoutTimeGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446A64AD1DC0265800D569CD /* BoutTimeGame.swift */; };
 		446A64B11DC0D1FF00D569CD /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446A64B01DC0D1FF00D569CD /* UIViewExtension.swift */; };
@@ -42,6 +43,7 @@
 		27A443291DC25FC40066207F /* GameResultController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameResultController.swift; sourceTree = "<group>"; };
 		27A4432B1DC29EAC0066207F /* InfoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoController.swift; sourceTree = "<group>"; };
 		4439FCC61DC14BFC006A7814 /* UIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
+		44632E471DC7A77E00681C8A /* ButtonPress.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ButtonPress.wav; sourceTree = "<group>"; };
 		446A64AB1DC025F700D569CD /* Protocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		446A64AD1DC0265800D569CD /* BoutTimeGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoutTimeGame.swift; sourceTree = "<group>"; };
 		446A64B01DC0D1FF00D569CD /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
@@ -78,13 +80,12 @@
 		274C550C1DBBE2E400F7D0D2 /* BoutTime */ = {
 			isa = PBXGroup;
 			children = (
-				446A64AF1DC0D1E500D569CD /* Views */,
 				27A443171DBFCF730066207F /* Model */,
-				27A4431C1DBFF7DF0066207F /* Resources */,
-				274C550D1DBBE2E400F7D0D2 /* AppDelegate.swift */,
+				446A64AF1DC0D1E500D569CD /* ViewExtensions */,
 				27A443201DC0EB4F0066207F /* Controllers */,
+				27A4431C1DBFF7DF0066207F /* Resources */,
 				27A4431F1DC0EB3E0066207F /* Storyboards */,
-				274C55191DBBE2E400F7D0D2 /* Info.plist */,
+				274C550D1DBBE2E400F7D0D2 /* AppDelegate.swift */,
 			);
 			path = BoutTime;
 			sourceTree = "<group>";
@@ -104,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				274C55141DBBE2E400F7D0D2 /* Assets.xcassets */,
+				274C55191DBBE2E400F7D0D2 /* Info.plist */,
 				27A443151DBFC5B00066207F /* Events.plist */,
 				44B485A71DBCF62F00C7475E /* Sounds */,
 			);
@@ -130,18 +132,19 @@
 			name = Controllers;
 			sourceTree = "<group>";
 		};
-		446A64AF1DC0D1E500D569CD /* Views */ = {
+		446A64AF1DC0D1E500D569CD /* ViewExtensions */ = {
 			isa = PBXGroup;
 			children = (
 				446A64B01DC0D1FF00D569CD /* UIViewExtension.swift */,
 				4439FCC61DC14BFC006A7814 /* UIImage.swift */,
 			);
-			name = Views;
+			name = ViewExtensions;
 			sourceTree = "<group>";
 		};
 		44B485A71DBCF62F00C7475E /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				44632E471DC7A77E00681C8A /* ButtonPress.wav */,
 				27A443181DBFD81A0066207F /* IncorrectBuzz.wav */,
 				27A443191DBFD81A0066207F /* CorrectDing.wav */,
 			);
@@ -210,6 +213,7 @@
 			files = (
 				274C55181DBBE2E400F7D0D2 /* LaunchScreen.storyboard in Resources */,
 				27A4431B1DBFD81A0066207F /* CorrectDing.wav in Resources */,
+				44632E481DC7A77E00681C8A /* ButtonPress.wav in Resources */,
 				27A4431A1DBFD81A0066207F /* IncorrectBuzz.wav in Resources */,
 				448FC0E11DC2D581002D517F /* Main.storyboard in Resources */,
 				274C55151DBBE2E400F7D0D2 /* Assets.xcassets in Resources */,

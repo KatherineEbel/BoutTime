@@ -11,7 +11,7 @@ import AudioToolbox
 
 class BoutTimeGame {
   var events: [EventType]
-  var gameSounds: [GameSound: SystemSoundID] = [.CorrectDing: 0, .IncorrectBuzz: 0]
+  var gameSounds: [GameSound: SystemSoundID] = [.CorrectDing: 0, .IncorrectBuzz: 0, .ButtonPress: 0]
   var currentRound: BoutTimeRound = BoutTimeRound()
   var roundsPerGame = 6
   var roundCounter = 0
@@ -32,6 +32,7 @@ class BoutTimeGame {
   
   // load sounds at start of game
   func start() {
+    newRound()
     do {
       try loadGameSounds()
     } catch let error {
