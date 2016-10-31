@@ -8,6 +8,7 @@
 
 import UIKit
 import AudioToolbox
+import GameKit
 
 enum GameSound: String {
   case IncorrectBuzz
@@ -17,7 +18,6 @@ enum GameSound: String {
 enum GameEvent {
   case incorrectAnswer
   case correctAnswer
-  case gameOver
   case nextRound(success: Bool)
 }
 
@@ -43,17 +43,20 @@ enum EventButtonTag: Int {
   }
 }
 
+// Prompt Labels for gameController
 enum GamePrompt: String {
   case shakeToComplete = "Shake to complete"
   case tapToLearnMore = "Tap events to learn more"
 }
 
+// segue identifiers for viewControllers
 enum SegueIdentifier: String {
   case startGame
   case getInfo
   case endGame
 }
 
+// event can determine if it comes before another event
 struct Event: EventType {
   let name: String
   let date: NSDate
@@ -66,12 +69,14 @@ struct Event: EventType {
   }
 }
 
+// BoutTimeGame will have an instance of this class as a currentRound property
 class BoutTimeRound: NSObject, Timeable, Chronologicalizable {
   let eventsPerRound = 4
   var isOver = false
   var timeLimit: TimeInterval = 60
   var timer: Timer = Timer()
   var events: [EventType] = []
+  var currentEventIndexes: [Int] = []
   weak var timerLabel: UILabel?
   var timerCounter: Int = 60 {
     didSet {
@@ -80,6 +85,7 @@ class BoutTimeRound: NSObject, Timeable, Chronologicalizable {
       }
     }
   }
+  // calculates if events for round are chronological earliest to latest
   var isChronological: Bool {
     for event in 0..<(events.count - 1) {
       if !events[event].isBefore(otherEvent: events[event + 1]) {
@@ -89,6 +95,7 @@ class BoutTimeRound: NSObject, Timeable, Chronologicalizable {
     return true
   }
   
+  // timer will call decrementCounter every second until invalidated by stopTimer()
   func startTimer() {
     timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(BoutTimeRound.decrementCounter), userInfo: nil, repeats: true)
   }
@@ -100,32 +107,54 @@ class BoutTimeRound: NSObject, Timeable, Chronologicalizable {
   func decrementCounter() {
     timerCounter -= 1
     if timerCounter == 0 {
-      roundOver()
+      end()
     }
   }
   
+  // keeps the label's text synced with the counter
   func update(timerLabel label: UILabel, withCounter counter: Int) {
-    label.text = counter >= 10 ? "0:\(counter)" : "0:0\(counter)"
+    let labelTitle = counter >= 10 ? "0:\(counter)" : "0:0\(counter)"
+    timerLabel?.text = labelTitle
   }
   
-  func roundOver() {
+  // stops timer and marks round as over
+  func end() {
     stopTimer()
     isOver = true
   }
   
+  // empty the rounds events, reset timerCounter and mark round not over
   func reset() {
     events = []
     timerCounter = 60
     isOver = false
   }
   
-  deinit {
-    print("Current Round deinit")
-    timerLabel = nil
+  // adds events for new round
+  func getEvents(fromEvents events: [EventType]) {
+    currentEventIndexes = []
+    for _ in 0..<eventsPerRound {
+      self.events.append(events[getUniqueIndexForEvent(withUpperBound: events.count)])
+    }
+  }
+  
+  // gets a random index to use that hasn't already been used for this round
+  func getUniqueIndexForEvent(withUpperBound bound: Int) -> Int {
+    var indexOfEvent: Int
+    repeat {
+      indexOfEvent = GKRandomSource.sharedRandom().nextInt(upperBound: bound)
+    } while currentEventIndexes.contains(indexOfEvent)
+    currentEventIndexes.append(indexOfEvent)
+    return indexOfEvent
+  }
+  
+  func swapEvents(currentEventIndex oldIndex: Int, newEventIndex newIndex: Int) {
+    swap(&events[oldIndex], &events[newIndex])
   }
 }
 
 
+// convert a plist to a dictionary
 class PlistConverter {
   class func dictionaryFromFile(resource: String, ofType type: String) throws -> [String: AnyObject] {
     guard let path = Bundle.main.path(forResource: resource, ofType: type) else {
@@ -140,6 +169,7 @@ class PlistConverter {
   }
 }
 
+// turn dictionary to an array of EventType
 class EventUnarchiver {
   class func eventsFromDictionary(dictionary: [String: AnyObject]) throws -> [EventType] {
     var events: [EventType] = []

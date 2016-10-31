@@ -8,14 +8,12 @@
 
 import Foundation
 import AudioToolbox
-import GameKit
 
 class BoutTimeGame {
   var events: [EventType]
   var gameSounds: [GameSound: SystemSoundID] = [.CorrectDing: 0, .IncorrectBuzz: 0]
   var currentRound: BoutTimeRound = BoutTimeRound()
-  var currentRoundEventIndexes: [Int] = []
-  var roundsPerGame = 5
+  var roundsPerGame = 6
   var roundCounter = 0
   var totalScore = 0
   var isGameOver: Bool {
@@ -32,6 +30,7 @@ class BoutTimeGame {
     }
   }
   
+  // load sounds at start of game
   func start() {
     do {
       try loadGameSounds()
@@ -42,31 +41,15 @@ class BoutTimeGame {
   
   func newRound() {
     currentRound.reset()
-    currentRound.events = getEventsForCurrentRound()
+    currentRound.getEvents(fromEvents: events)
   }
   
-  func getEventsForCurrentRound() -> [EventType] {
-    currentRoundEventIndexes = []
-    var eventsForRound: [EventType] = []
-    for _ in 0..<currentRound.eventsPerRound {
-      eventsForRound.append(events[getUniqueIndexForEvent()])
-    }
-    return eventsForRound
-  }
-  
-  func getUniqueIndexForEvent() -> Int {
-    var indexOfEvent: Int
-    repeat {
-      indexOfEvent = GKRandomSource.sharedRandom().nextInt(upperBound: events.count)
-    } while currentRoundEventIndexes.contains(indexOfEvent)
-    currentRoundEventIndexes.append(indexOfEvent)
-    return indexOfEvent
-  }
-  
-  func swapEvents(oldEventIndex oldIndex: Int, newEventIndex newIndex: Int) {
-    swap(&currentRound.events[oldIndex], &currentRound.events[newIndex])
+  // keeps events for round in sync with game play
+  func swapEvents(forIndex oldIndex: Int, andIndex newIndex: Int) {
+    currentRound.swapEvents(currentEventIndex: oldIndex, newEventIndex: newIndex)
   }
  
+  // throws error if sound unable to load
   func loadGameSounds() throws {
     for (name, _) in gameSounds {
       let soundURL: URL
@@ -78,28 +61,33 @@ class BoutTimeGame {
     }
   }
   
+  // play passed in sound
   func play(sound: GameSound) {
     if let sound = gameSounds[sound] {
       AudioServicesPlaySystemSound(sound)
     }
   }
   
+  // increments number of rounds and adds to score if round ends with correct answer
+  // if game not over start a new round
   func endRound(success: Bool) {
     if success {
       totalScore += 1
     }
     roundCounter += 1
-    currentRound.roundOver()
+    currentRound.end()
     if !isGameOver {
       newRound()
     }
   }
   
+  // reset score at end of game
   func endGame() {
     totalScore = 0
     roundCounter = 0
   }
   
+  // configure final score for display
   func gameResult() -> String {
     return "\(totalScore) / \(roundsPerGame)"
   }

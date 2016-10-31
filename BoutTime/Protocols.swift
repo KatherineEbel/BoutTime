@@ -18,7 +18,6 @@ protocol EventType {
 protocol Timeable {
   var timeLimit: TimeInterval { get }
   var timer: Timer { get set }
-  
   func stopTimer()
   func startTimer()
 }

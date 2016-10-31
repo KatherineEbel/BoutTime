@@ -14,7 +14,6 @@ extension UIImage {
     switch event {
     case .nextRound(success: let success):
       name = success ? "next_round_success" : "next_round_fail"
-    case .gameOver: name = "play_again"
     default: name = "play_again"
     }
     guard let image = UIImage(named: name) else {
